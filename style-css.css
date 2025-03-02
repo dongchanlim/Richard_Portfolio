@@ -1,0 +1,455 @@
+:root {
+    --netflix-red: #e50914;
+    --netflix-black: #141414;
+    --netflix-dark-gray: #181818;
+    --netflix-medium-gray: #2f2f2f;
+    --netflix-light-gray: #808080;
+    --netflix-white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: var(--netflix-black);
+    color: var(--netflix-white);
+    overflow-x: hidden;
+}
+
+/* 헤더 영역 */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 100;
+    transition: background-color 0.5s ease;
+}
+
+header.scrolled {
+    background-color: var(--netflix-black);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--netflix-red);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--netflix-light-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--netflix-white);
+}
+
+/* 배너 영역 */
+.hero-banner {
+    height: 80vh;
+    background: linear-gradient(to top, var(--netflix-black) 0%, transparent 60%), 
+                url('/api/placeholder/1800/800') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 4%;
+    margin-bottom: 2rem;
+}
+
+.hero-content {
+    max-width: 650px;
+    margin-top: 10vh;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--netflix-light-gray);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--netflix-red);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: rgba(109, 109, 110, 0.7);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* 콘텐츠 섹션 */
+.content-section {
+    padding: 2rem 4%;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* 슬라이더 컨테이너 */
+.slider-container {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.slider-controls {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.slider-container:hover .slider-controls {
+    opacity: 1;
+}
+
+.slider-prev {
+    left: 0;
+}
+
+.slider-next {
+    right: 0;
+}
+
+.slider-controls i {
+    font-size: 2rem;
+    color: white;
+}
+
+/* 카드 슬라이더 */
+.card-slider {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 1.5rem 0;
+    scroll-behavior: smooth;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.card-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* 카드 스타일 */
+.card {
+    flex: 0 0 auto;
+    width: 300px;
+    height: 170px;
+    background-color: var(--netflix-dark-gray);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    z-index: 20;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .card-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+    font-size: 0.8rem;
+    color: var(--netflix-light-gray);
+}
+
+.card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--netflix-dark-gray);
+    padding: 1rem;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 5;
+}
+
+.card-description {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--netflix-light-gray);
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--netflix-medium-gray);
+    border-radius: 10px;
+    color: var(--netflix-light-gray);
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.modal-content {
+    background-color: var(--netflix-dark-gray);
+    width: 100%;
+    max-width: 900px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    position: relative;
+    height: 400px;
+}
+
+.modal-header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, var(--netflix-dark-gray) 0%, transparent 60%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.modal-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-body {
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.modal-section {
+    margin-bottom: 2rem;
+}
+
+.modal-section-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--netflix-white);
+}
+
+.modal-resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.resource-card {
+    background-color: var(--netflix-medium-gray);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.resource-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.resource-link {
+    color: var(--netflix-light-gray);
+    text-decoration: none;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.resource-link:hover {
+    text-decoration: underline;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* 단계별 스타일 색상 */
+.stage1 {
+    --stage-color: #3498db;
+}
+
+.stage2 {
+    --stage-color: #2ecc71;
+}
+
+.stage3 {
+    --stage-color: #e67e22;
+}
+
+.stage4 {
+    --stage-color: #9b59b6;
+}
+
+.stage-indicator {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--stage-color);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .card {
+        width: 200px;
+        height: 120px;
+    }
+    
+    .modal-title {
+        font-size: 1.8rem;
+    }
+    
+    .modal-header {
+        height: 250px;
+    }
+}
+
+/* 하단 푸터 */
+footer {
+    padding: 2rem 4%;
+    background-color: var(--netflix-black);
+    color: var(--netflix-light-gray);
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 2rem;
+}
