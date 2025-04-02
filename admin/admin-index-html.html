@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 분석가 학습 아카이브 - 관리자</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <!-- 로그인 화면 -->
+    <div class="login-container" id="login-container">
+        <div class="login-box">
+            <h2 class="login-title">관리자 로그인</h2>
+            <div class="login-logo">데이터 아카이브</div>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="관리자 ID" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="비밀번호" required>
+                </div>
+                <button type="submit" class="login-btn">로그인</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 관리자 대시보드 -->
+    <div class="admin-container" id="admin-container" style="display: none;">
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <div class="logo">데이터 아카이브</div>
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-section="dashboard">
+                        <i class="fas fa-chart-line"></i>
+                        <span>대시보드</span>
+                    </li>
+                    <li data-section="content">
+                        <i class="fas fa-file-alt"></i>
+                        <span>콘텐츠 관리</span>
+                    </li>
+                    <li data-section="users">
+                        <i class="fas fa-users"></i>
+                        <span>사용자 관리</span>
+                    </li>
+                    <li data-section="stats">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>통계 분석</span>
+                    </li>
+                    <li data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>설정</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="logout-btn" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>로그아웃</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- 메인 콘텐츠 영역 -->
+        <main class="main-content">
+            <!-- 상단 헤더 -->
+            <header class="content-header">
+                <div class="header-title">
+                    <h1 id="page-title">대시보드</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="검색...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="/api/placeholder/40/40" alt="관리자">
+                        <span>관리자</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 대시보드 섹션 -->
+            <section id="dashboard-section" class="content-section">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(52, 152, 219, 0.2);">
+                            <i class="fas fa-users" style="color: #3498db;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>총 사용자</h3>
+                            <p class="stat-value">3,284</p>
+                            <p class="stat-change positive">+12% <span>지난달 대비</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(46, 204, 113, 0.2);">
+                            <i class="fas fa-book-open" style="color: #2ecc71;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>학습 콘텐츠</h3>
+                            <p class="stat-value">142</p>
+                            <p class="stat-change positive">+5% <span>지난달 대비</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(230, 126, 34, 0.2);">
+                            <i class="fas fa-eye" style="color: #e67e22;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>페이지 조회</h3>
+                            <p class="stat-value">24,589</p>
+                            <p class="stat-change positive">+18% <span>지난달 대비</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(155, 89, 182, 0.2);">
+                            <i class="fas fa-certificate" style="color: #9b59b6;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>완료 강좌</h3>
+                            <p class="stat-value">789</p>
+                            <p class="stat-change positive">+7% <span>지난달 대비</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-card">
+                        <h3>월별 사용자 접속 현황</h3>
+                        <div class="chart-placeholder">
+                            <img src="/api/placeholder/700/300?text=Monthly+Users+Chart" alt="월별 사용자 차트">
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>카테고리별 콘텐츠 인기도</h3>
+                        <div class="chart-placeholder">
+                            <img src="/api/placeholder/700/300?text=Category+Popularity+Chart" alt="카테고리별 인기도 차트">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activities">
+                    <h3>최근 활동</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-info">
+                                <p>새로운 사용자 5명이 가입했습니다.</p>
+                                <span class="activity-time">2시간 전</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="activity-info">
+                                <p>"머신러닝 기초" 콘텐츠가 업데이트되었습니다.</p>
+                                <span class="activity-time">5시간 전</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="activity-info">
+                                <p>새로운 피드백 8개가 등록되었습니다.</p>
+                                <span class="activity-time">어제</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="activity-info">
+                                <p>12명의 사용자가 "Python 기초" 과정을 완료했습니다.</p>
+                                <span class="activity-time">2일 전</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 콘텐츠 관리 섹션 -->
+            <section id="content-section" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>콘텐츠 관리</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> 새 콘텐츠 추가
+                    </button>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <select>
+                            <option>모든 단계</option>
+                            <option>Stage 1: 기초 역량</option>
+                            <option>Stage 2: 핵심 기술</option>
+                            <option>Stage 3: 전문 역량</option>
+                            <option>Stage 4: 실무 역량</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select>
+                            <option>모든 유형</option>
+                            <option>온라인 코스</option>
+                            <option>자료</option>
+                            <option>프로젝트</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select>
+                            <option>최신순</option>
+                            <option>인기순</option>
+                            <option>조회수순</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="content-table-container">
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>썸네일</th>
+                                <th>제목</th>
+                                <th>카테고리</th>
+                                <th>단계</th>
+                                <th>상태</th>
+                                <th>조회수</th>
+                                <th>등록일</th>
+                                <th>작업</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1001</td>
+                                <td><img src="/api/placeholder/50/30?text=Python" alt="Python" class="thumbnail"></td>
+                                <td>프로그래밍 기초: Python</td>
+                                <td>프로그래밍</td>
+                                <td><span class="stage-badge stage-1">Stage 1</span></td>
+                                <td><span class="status-badge active">활성</span></td>
+                                <td>1,245</td>
+                                <td>2025-03-15</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1002</td>
+                                <td><img src="/api/placeholder/50/30?text=R" alt="R" class="thumbnail"></td>
+                                <td>프로그래밍 기초: R</td>
+                                <td>프로그래밍</td>
+                                <td><span class="stage-badge stage-1">Stage 1</span></td>
+                                <td><span class="status-badge active">활성</span></td>
+                                <td>985</td>
+                                <td>2025-03-15</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1003</td>
+                                <td><img src="/api/placeholder/50/30?text=SQL" alt="SQL" class="thumbnail"></td>
+                                <td>SQL 및 데이터베이스</td>
+                                <td>데이터베이스</td>
+                                <td><span class="stage-badge stage-1">Stage 1</span></td>
+                                <td><span class="status-badge active">활성</span></td>
+                                <td>1,102</td>
+                                <td>2025-03-16</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1004</td>
+                                <td><img src="/api/placeholder/50/30?text=Tableau" alt="Tableau" class="thumbnail"></td>
+                                <td>데이터 시각화: Tableau</td>
+                                <td>시각화</td>
+                                <td><span class="stage-badge stage-2">Stage 2</span></td>
+                                <td><span class="status-badge active">활성</span></td>
+                                <td>876</td>
+                                <td>2025-03-17</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1005</td>
+                                <td><img src="/api/placeholder/50/30?text=ML" alt="Machine Learning" class="thumbnail"></td>
+                                <td>머신러닝 기초</td>
+                                <td>머신러닝</td>
+                                <td><span class="stage-badge stage-2">Stage 2</span></td>
+                                <td><span class="status-badge draft">초안</span></td>
+                                <td>--</td>
+                                <td>2025-03-28</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">...</button>
+                    <button class="pagination-btn">10</button>
+                    <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- 사용자 관리 섹션 -->
+            <section id="users-section" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>사용자 관리</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> 새 사용자 추가
+                    </button>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <select>
+                            <option>모든 역할</option>
+                            <option>학습자</option>
+                            <option>관리자</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select>
+                            <option>모든 상태</option>
+                            <option>활성</option>
+                            <option>비활성</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select>
+                            <option>최근 가입순</option>
+                            <option>활동순</option>
+                            <option>이름순</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="content-table-container">
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>프로필</th>
+                                <th>이름</th>
+                                <th>이메일</th>
+                                <th>역할</th>
+                                <th>가입일</th>
+                                <th>완료 강좌</th>
+                                <th>상태</th>
+                                <th>작업</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5001</td>
+                                <td><img src="/api/placeholder/40/40" alt="사용자" class="user-profile"></td>
+                                <td>홍길동</td>
+                                <td>hong@example.com</td>
+                                <td>학습자</td>
+                                <td>2025-01-15</td>
+                                <td>12</td>
+                                <td><span class="status-badge active">활성</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5002</td>
+                                <td><img src="/api/placeholder/40/40" alt="사용자" class="user-profile"></td>
+                                <td>김영희</td>
+                                <td>kim@example.com</td>
+                                <td>학습자</td>
+                                <td>2025-02-03</td>
+                                <td>8</td>
+                                <td><span class="status-badge active">활성</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5003</td>
+                                <td><img src="/api/placeholder/40/40" alt="사용자" class="user-profile"></td>
+                                <td>이철수</td>
+                                <td>lee@example.com</td>
+                                <td>관리자</td>
+                                <td>2024-11-25</td>
+                                <td>24</td>
+                                <td><span class="status-badge active">활성</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5004</td>
+                                <td><img src="/api/placeholder/40/40" alt="사용자" class="user-profile"></td>
+                                <td>박지민</td>
+                                <td>park@example.com</td>
+                                <td>학습자</td>
+                                <td>2025-03-10</td>
+                                <td>3</td>
+                                <td><span class="status-badge active">활성</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5005</td>
+                                <td><img src="/api/placeholder/40/40" alt="사용자" class="user-profile"></td>
+                                <td>최수진</td>
+                                <td>choi@example.com</td>
+                                <td>학습자</td>
+                                <td>2025-02-18</td>
+                                <td>6</td>
+                                <td><span class="status-badge inactive">비활성</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn activate-btn"><i class="fas fa-check"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">...</button>
+                    <button class="pagination-btn">10</button>
+                    <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- 통계 분석 섹션 -->
+            <section id="stats-section" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>통계 분석</h2>
+                    <div class="date-filter">
+                        <label>기간:</label>
+                        <select>
+                            <option>최근 30일</option>
+                            <option>이번 달</option>
+                            <option>지난 달</option>
+                            <option>최근 3개월</option>
+                            <option>최근 6개월</option>
+                            <option>올해</option>
+                            <option>작년</option>
+                            <option>직접 설정</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="chart-card full-width">
+                        <h3>사용자 활동 추이</h3>
+                        <div class="chart-placeholder">
+                            <img src="/api/placeholder/1100/300?text=User+Activity+Trend" alt="사용자 활동 추이">
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>카테고리별 완료율</h3>
+                        <div class="chart-placeholder">
+                            <img src="/api/placeholder/500/300?text=Category+Completion+Rate" alt="카테고리별 완료율">
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>사용자 학습 경로 분석</h3>
+                        <div class="chart-placeholder">
+                            <img src="/api/placeholder/500/300?text=Learning+Path+Analysis" alt="학습 경로 분석">
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>접속 시간대 분포</h3>
+                        <div class="chart-placeholder">
+                            <img src="/api/placeholder/500/300?text=Access+Time+Distribution" alt="접속 시간대 분포">
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>디바이스별 사용률</h3>
+                        <div class="chart-placeholder">
+                            <img src="/api/placeholder/500/300?text=Device+Usage+Rate" alt="디바이스별 사용률">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-file-csv"></i> CSV로 내보내기
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-file-pdf"></i> PDF로 내보내기
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-print"></i> 인쇄
+                    </button>
+                </div>
+            </section>
+
+            <!-- 설정 섹션 -->
+            <section id="settings-section" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>설정</h2>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>일반 설정</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>사이트 이름</label>
+                                <input type="text" value="데이터 분석가 학습 아카이브">
+                            </div>
+                            <div class="form-group">
+                                <label>태그라인</label>
+                                <input type="text" value="체계적인 단계별 학습으로 데이터 분석 전문가의 길을 열어보세요">
+                            </div>
+                            <div class="form-group">
+                                <label>로고 이미지</label>
+                                <div class="file-upload">
+                                    <input type="file" id="logo-upload">
+                                    <label for="logo-upload" class="file-upload-btn">파일 선택</label>
+                                    <span class="file-name">현재 로고: logo.png</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>기본 언어</label>
+                                <select>
+                                    <option selected>한국어</option>
+                                    <option>영어</option>
+                                    <option>일본어</option>
+                                    <option>중국어</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary">저장</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>알림 설정</h3>
+                        <form class="settings-form">
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>새 사용자 가입 알림</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>콘텐츠 업데이트 알림</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>사용자 피드백 알림</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span>일일 통계 리포트 이메일</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>주간 요약 리포트 이메일</span>
+                                </label>
+                            </div>
+                            <button type="button" class="btn btn-primary">저장</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>보안 설정</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>비밀번호 최소 길이</label>
+                                <input type="number" value="8">
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>특수 문자 필수</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>대소문자 필수</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>로그인 시도 제한</label>
+                                <input type="number" value="5">
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>이중 인증(2FA) 활성화</span>
+                                </label>
+                            </div>
+                            <button type="button" class="btn btn-primary">저장</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>관리자 계정</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>현재 비밀번호</label>
+                                <input type="password">
+                            </div>
+                            <div class="form-group">
+                                <label>새 비밀번호</label>
+                                <input type="password">
+                            </div>
+                            <div class="form-group">
+                                <label>비밀번호 확인</label>
+                                <input type="password">
+                            </div>
+                            <div class="form-group">
+                                <label>이메일</label>
+                                <input type="email" value="admin@example.com">
+                            </div>
+                            <button type="button" class="btn btn-primary">저장</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 스크립트 -->
+    <script src="admin-script.js"></script>
+</body>
+</html>
