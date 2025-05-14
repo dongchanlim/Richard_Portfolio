@@ -162,6 +162,12 @@ header.scrolled {
     font-weight: 500;
 }
 
+.section-subtitle {
+    font-size: 1.0rem;
+    margin-bottom: 1.0rem;
+    color: var(--netflix-light-gray);
+}
+
 /* 슬라이더 컨테이너 */
 .slider-container {
     position: relative;
