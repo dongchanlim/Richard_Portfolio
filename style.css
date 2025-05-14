@@ -93,13 +93,13 @@ header.scrolled {
     margin-bottom: 1.5rem;
 }
 
-.profession {
+.profession, .contact-info {
     font-size: 1.3rem;
     color: var(--netflix-white);
     margin-bottom: 0.3rem;
 }
 
-.contact-info, .social-links {
+.social-links {
     font-size: 1rem;
     color: var(--netflix-light-gray);
     margin-bottom: 0.3rem;
