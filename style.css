@@ -84,9 +84,36 @@ header.scrolled {
 }
 
 .hero-title {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
     font-weight: bold;
+}
+
+.hero-subheading {
+    margin-bottom: 1.5rem;
+}
+
+.profession {
+    font-size: 1.3rem;
+    color: var(--netflix-white);
+    margin-bottom: 0.3rem;
+}
+
+.contact-info, .social-links {
+    font-size: 1rem;
+    color: var(--netflix-light-gray);
+    margin-bottom: 0.3rem;
+}
+
+.social-links a {
+    color: var(--netflix-light-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--netflix-red);
+    text-decoration: underline;
 }
 
 .hero-subtitle {
@@ -423,7 +450,15 @@ header.scrolled {
 /* 반응형 */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+    
+    .profession {
+        font-size: 1.1rem;
+    }
+    
+    .contact-info, .social-links {
+        font-size: 0.9rem;
     }
     
     .hero-subtitle {
