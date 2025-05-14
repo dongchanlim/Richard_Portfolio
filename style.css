@@ -138,8 +138,8 @@ header.scrolled {
 }
 
 .btn-primary {
-    background-color: var(--netflix-red);
-    color: white;
+    background-color: var(--netflix-white);
+    color: black;
 }
 
 .btn-secondary {
