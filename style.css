@@ -43,7 +43,7 @@ header.scrolled {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--netflix-red);
+    color: var(--netflix-blue);
     text-decoration: none;
 }
 
@@ -140,7 +140,7 @@ header.scrolled {
 }
 
 .btn-primary {
-    background-color: var(--netflix-red);
+    background-color: var(--netflix-ivory);
     color: white;
 }
 
