@@ -95,7 +95,7 @@ header.scrolled {
 
 .profession, .contact-info {
     font-size: 1.3rem;
-    color: var(--netflix-black);
+    color: var(--netflix-white);
     margin-bottom: 0.3rem;
 }
 
