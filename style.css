@@ -1,4 +1,6 @@
 :root {
+    --netflix-ivory: #e50914;
+    --netflix-blue: #141414;
     --netflix-red: #5555fb;
     --netflix-black: #fbfbfb;
     --netflix-dark-gray: #181818;
@@ -35,7 +37,7 @@ header {
 }
 
 header.scrolled {
-    background-color: var(--netflix-black);
+    background-color: var(--netflix-ivory);
 }
 
 .logo {
@@ -95,7 +97,7 @@ header.scrolled {
 
 .profession, .contact-info {
     font-size: 1.3rem;
-    color: var(--netflix-white);
+    color: var(--netflix-black);
     margin-bottom: 0.3rem;
 }
 
@@ -112,7 +114,7 @@ header.scrolled {
 }
 
 .social-links a:hover {
-    color: var(--netflix-red);
+    color: var(--netflix-blue);
     text-decoration: underline;
 }
 
