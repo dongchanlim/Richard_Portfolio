@@ -450,7 +450,7 @@ header.scrolled {
 /* 반응형 */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.0rem;
     }
     
     .profession {
