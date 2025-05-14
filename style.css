@@ -1,6 +1,4 @@
 :root {
-    --netflix-ivory: #e50914;
-    --netflix-blue: #5555fb;
     --netflix-red: #141414;
     --netflix-black: #fbfbfb;
     --netflix-dark-gray: #181818;
@@ -37,13 +35,13 @@ header {
 }
 
 header.scrolled {
-    background-color: var(--netflix-ivory);
+    background-color: var(--netflix-black);
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--netflix-blue);
+    color: var(--netflix-red);
     text-decoration: none;
 }
 
@@ -140,7 +138,7 @@ header.scrolled {
 }
 
 .btn-primary {
-    background-color: var(--netflix-ivory);
+    background-color: var(--netflix-red);
     color: white;
 }
 
