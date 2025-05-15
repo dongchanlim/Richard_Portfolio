@@ -68,14 +68,35 @@ header.scrolled {
 
 /* 배너 영역 */
 .hero-banner {
-    height: 80vh;
-    background: linear-gradient(to top, var(--netflix-black) 0%, transparent 60%), 
-                url('/api/placeholder/1800/800') center/cover no-repeat;
+    min-height: 90vh;
+    background: linear-gradient(to top, var(--netflix-black) 0%, rgba(20, 20, 20, 0.8) 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 4%;
+    padding: 0;
     margin-bottom: 2rem;
+}
+
+.hero-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-left {
+    width: 60%;
+    padding: 0 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-right {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2%;
 }
 
 .hero-content {
@@ -114,6 +135,148 @@ header.scrolled {
 .social-links a:hover {
     color: var(--netflix-blue);
     text-decoration: underline;
+}
+
+
+/* 비디오 슬라이더 */
+.video-slider-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-slider {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.video-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.video-card {
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.02);
+}
+
+.video-thumbnail {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(229, 9, 20, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.play-button:hover {
+    background-color: var(--netflix-red);
+    transform: scale(1.1);
+}
+
+.play-button i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.video-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.video-slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.video-slider-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.video-slider-btn:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.video-slider-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--netflix-red);
 }
 
 .hero-subtitle {
