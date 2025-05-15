@@ -8,6 +8,33 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// 모바일 메뉴 토글
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+    
+    if (menuBtn) {
+        menuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    
+        // 메뉴 항목 클릭 시 메뉴 닫기
+        navLinksItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+    
+        // 메뉴 외부 클릭 시 메뉴 닫기
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-btn')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    }
+});
+
 // 슬라이더 컨트롤
 document.querySelectorAll('.slider-container').forEach(container => {
     const slider = container.querySelector('.card-slider');
@@ -79,19 +106,60 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSlider();
     }, 5000);
     
-    // 마우스 오버 시 자동 슬라이드 멈춤
+    // 마우스 오버 또는 터치 시 자동 슬라이드 멈춤
     const sliderContainer = document.querySelector('.video-slider-container');
-    sliderContainer.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
     
-    // 마우스 아웃 시 자동 슬라이드 재시작
-    sliderContainer.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateSlider();
-        }, 5000);
-    });
+    if (sliderContainer) {
+        // 마우스 이벤트
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            }, 5000);
+        });
+        
+        // 터치 이벤트
+        sliderContainer.addEventListener('touchstart', () => {
+            clearInterval(slideInterval);
+        }, {passive: true});
+        
+        sliderContainer.addEventListener('touchend', () => {
+            slideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            }, 5000);
+        }, {passive: true});
+        
+        // 스와이프 기능 추가
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        sliderContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+        
+        sliderContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+        
+        function handleSwipe() {
+            // 75px 이상 차이가 나면 스와이프로 인식
+            if (touchEndX < touchStartX - 75) {
+                // 왼쪽으로 스와이프
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            } else if (touchEndX > touchStartX + 75) {
+                // 오른쪽으로 스와이프
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlider();
+            }
+        }
+    }
 });
 
 // 모달 기능
