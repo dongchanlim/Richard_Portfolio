@@ -57,7 +57,7 @@ header.scrolled {
 .nav-links a {
     color: var(--netflix-light-gray);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     transition: color 0.3s ease;
 }
 
