@@ -117,10 +117,15 @@ header.scrolled {
 }
 
 .hero-subtitle {
-    font-weight: 400;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     color: var(--netflix-light-gray);
+}
+
+.profession {
+    font-size: 1.3rem;
+    color: var(--netflix-white);
+    margin-bottom: 0.3rem;
 }
 
 .social-links {
