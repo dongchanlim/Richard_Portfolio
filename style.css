@@ -281,8 +281,8 @@ header.scrolled {
 }
 
 .btn-primary {
-    background-color: var(--netflix-white);
-    color: black;
+    background-color: var(--netflix-orange);
+    color: white;
 }
 
 .btn-secondary {
@@ -406,7 +406,6 @@ header.scrolled {
 }
 
 .card-title {
-    color: var(--netflix-orange);
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
