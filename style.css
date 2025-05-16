@@ -5,6 +5,7 @@
     --netflix-medium-gray: #2f2f2f;
     --netflix-light-gray: #808080;
     --netflix-white: #ffffff;
+    --netflix-orange: #f5751d;
 }
 
 * {
@@ -41,7 +42,7 @@ header.scrolled {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--netflix-white);
+    color: var(--netflix-orange);
     text-decoration: none;
 }
 
@@ -63,7 +64,7 @@ header.scrolled {
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--netflix-white);
+    color: var(--netflix-orange);
 }
 
 /* 배너 영역 */
@@ -133,7 +134,7 @@ header.scrolled {
 }
 
 .social-links a:hover {
-    color: var(--netflix-blue);
+    color: var(--netflix-orange);
     text-decoration: underline;
 }
 
