@@ -300,7 +300,6 @@ header.scrolled {
 }
 
 .section-title {
-    color: var(--netflix-orange);
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -407,6 +406,7 @@ header.scrolled {
 }
 
 .card-title {
+    color: var(--netflix-orange);
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
