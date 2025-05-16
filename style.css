@@ -116,10 +116,11 @@ header.scrolled {
     margin-bottom: 1.5rem;
 }
 
-.profession, .contact-info {
-    font-size: 1.3rem;
-    color: var(--netflix-white);
-    margin-bottom: 0.3rem;
+.hero-subtitle {
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--netflix-light-gray);
 }
 
 .social-links {
@@ -257,12 +258,6 @@ header.scrolled {
 
 .dot.active {
     background-color: var(--netflix-red);
-}
-
-.hero-subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--netflix-light-gray);
 }
 
 .hero-buttons {
