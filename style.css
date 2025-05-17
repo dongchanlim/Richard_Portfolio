@@ -76,6 +76,7 @@ header.scrolled {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 0;
     margin-bottom: 2rem;
 }
