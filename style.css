@@ -186,13 +186,13 @@ header.scrolled {
     color: var(--netflix-light-gray);
 }
 
-.intro-highlight {
+.highlight {
     color: var(--netflix-orange);
 }
 
 .intro-section-subtitle {
     font-size: 1.5rem;
-    color: --netflix-white;
+    color: var(--netflix-light-gray);
     margin-bottom: 3rem;
     max-width: 800px;
     margin-left: auto;
