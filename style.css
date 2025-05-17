@@ -77,8 +77,8 @@ header.scrolled {
     flex-direction: column;
     justify-content: center;
     padding: 0;
-    margin-left: 3rem auto;
-    margin-right: 3rem auto;
+    margin-left: 4rem auto;
+    margin-right: 4rem auto;
 }
 
 .hero-container {
@@ -131,24 +131,6 @@ header.scrolled {
     color: var(--netflix-white);
     margin-bottom: 0.3rem;
 }
-
-.social-links {
-    font-size: 1rem;
-    color: var(--netflix-light-gray);
-    margin-bottom: 0.3rem;
-}
-
-.social-links a {
-    color: var(--netflix-light-gray);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: var(--netflix-orange);
-    text-decoration: underline;
-}
-
 
 /* 비디오 슬라이더 */
 .video-slider-container {
@@ -582,6 +564,24 @@ header.scrolled {
     border-radius: 10px;
     color: var(--netflix-light-gray);
 }
+
+.social-links {
+    font-size: 1rem;
+    color: var(--netflix-light-gray);
+    margin-bottom: 0.3rem;
+}
+
+.social-links a {
+    color: var(--netflix-light-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--netflix-orange);
+    text-decoration: underline;
+}
+
 
 /* 모달 */
 .modal {
