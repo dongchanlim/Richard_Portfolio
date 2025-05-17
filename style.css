@@ -293,23 +293,23 @@ header.scrolled {
     text-align: center;
 }
 
-.section-title {
+.intro-section-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-weight: 600;
 }
 
-.section-subtitle {
+.intro-section-subtitle {
     font-size: 1.0rem;
     margin-bottom: 1.0rem;
     color: var(--netflix-light-gray);
 }
 
-.highlight {
+.intro-highlight {
     color: var(--netflix-orange);
 }
 
-.section-subtitle {
+.intro-section-subtitle {
     font-size: 1.5rem;
     color: --netflix-white;
     margin-bottom: 3rem;
@@ -349,7 +349,7 @@ header.scrolled {
 
 .feature-description {
     font-size: 0.95rem;
-    color: var(--netflix-medium-gray);
+    color: var(--netflix-light-gray);
     line-height: 1.6;
 }
 
