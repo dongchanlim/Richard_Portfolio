@@ -280,7 +280,7 @@ header.scrolled {
 }
 
 /* 콘텐츠 섹션 */
-.intro-section {
+.content-section {
     max-width: 1500px;
     margin: 4rem auto;
     padding: 2rem 4%;
