@@ -280,7 +280,7 @@ header.scrolled {
 }
 
 /* 인트로 섹션 */
-.content-section {
+.intro-section {
     max-width: 1200px;
     margin: 4rem auto;
     padding: 2rem;
@@ -386,6 +386,26 @@ header.scrolled {
     background-color: var(--netflix-orange);
     color: var(--netflix-white);
 }
+
+/* 콘텐츠 섹션 */
+.content-section {
+    margin: 4rem auto;
+    padding: 2rem 4%;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.section-subtitle {
+    font-size: 1.0rem;
+    margin-bottom: 1.0rem;
+    color: var(--netflix-light-gray);
+}
+
+
 
 /* 슬라이더 컨테이너 */
 .slider-container {
