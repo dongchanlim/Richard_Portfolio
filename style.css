@@ -314,7 +314,7 @@ header.scrolled {
 }
 
 .feature-card {
-    background-color: --netflix-dark-gray;
+    background-color: --netflix-medium-gray;
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
@@ -372,12 +372,12 @@ header.scrolled {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.8rem;
-    color: #222;
+    color: --netflix-white;
 }
 
 .feature-description {
     font-size: 0.95rem;
-    color: #666;
+    color: --netflix-medium-gray;
     line-height: 1.6;
 }
 
