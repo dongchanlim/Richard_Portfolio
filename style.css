@@ -383,6 +383,7 @@ header.scrolled {
 
 /* 콘텐츠 섹션 */
 .content-section {
+    margin: 4rem auto;
     padding: 2rem 4%;
 }
 
@@ -400,7 +401,6 @@ header.scrolled {
 
 /* 슬라이더 컨테이너 */
 .slider-container {
-    margin: 4rem auto;
     position: relative;
 }
 
