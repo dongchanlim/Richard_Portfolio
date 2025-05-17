@@ -76,12 +76,12 @@ header.scrolled {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     padding: 0;
     margin-bottom: 2rem;
 }
 
 .hero-container {
+    justify-content: center;
     display: flex;
     width: 100%;
     height: 100%;
