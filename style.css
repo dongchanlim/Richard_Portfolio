@@ -27,7 +27,7 @@ body {
     margin: 4rem auto;
 }
 
-.intro-section {
+.intro-section, .content-section {
     max-width: 1200px;
     margin: 4rem auto;
 }
