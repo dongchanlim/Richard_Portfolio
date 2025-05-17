@@ -537,23 +537,6 @@ header.scrolled {
     color: var(--netflix-light-gray);
 }
 
-.social-links {
-    font-size: 1rem;
-    color: var(--netflix-light-gray);
-    margin-bottom: 0.3rem;
-}
-
-.social-links a {
-    color: var(--netflix-light-gray);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: var(--netflix-orange);
-    text-decoration: underline;
-}
-
 
 /* 모달 */
 .modal {
@@ -918,6 +901,23 @@ header.scrolled {
 }
 
 /* 하단 푸터 */
+.social-links {
+    font-size: 1rem;
+    color: var(--netflix-light-gray);
+    margin-bottom: 0.3rem;
+}
+
+.social-links a {
+    color: var(--netflix-light-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--netflix-orange);
+    text-decoration: underline;
+}
+
 footer {
     padding: 2rem 4%;
     background-color: var(--netflix-black);
