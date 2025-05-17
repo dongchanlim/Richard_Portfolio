@@ -77,11 +77,10 @@ header.scrolled {
     flex-direction: column;
     justify-content: center;
     padding: 0;
-    margin-bottom: 2rem;
+    margin: 4rem auto;
 }
 
 .hero-container {
-    margin: 4rem auto;
     display: flex;
     width: 100%;
     height: 100%;
