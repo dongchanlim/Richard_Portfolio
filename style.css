@@ -282,7 +282,8 @@ header.scrolled {
 
 .intro-section {
     max-width: 1200px;
-    margin: 4rem auto;
+    margin-left: 4rem auto;
+    margin-right: 4rem auto;
     padding: 2rem;
     text-align: center;
 }
@@ -428,8 +429,10 @@ header.scrolled {
 
 /* 슬라이더 컨테이너 */
 .slider-container {
+    margin-left: 4rem auto;
+    margin-right: 4rem auto;
+    margin-bottom: 4rem auto;
     position: relative;
-    margin-bottom: 3rem;
 }
 
 .slider-controls {
