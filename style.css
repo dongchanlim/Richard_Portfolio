@@ -331,13 +331,13 @@ header.scrolled {
 .feature-title {
     font-size: 1.25rem;
     font-weight: 600;
+    font-color: --netflix-orange;
     margin-bottom: 0.8rem;
-    color: --netflix-orange;
 }
 
 .feature-description {
     font-size: 0.95rem;
-    color: --netflix-medium-gray;
+    font-color: --netflix-medium-gray;
     line-height: 1.6;
 }
 
