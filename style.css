@@ -305,7 +305,7 @@ header.scrolled {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #111;
+    color: --netflix-orange;
 }
 
 .highlight {
@@ -313,8 +313,8 @@ header.scrolled {
 }
 
 .section-subtitle {
-    font-size: 1.1rem;
-    color: #666;
+    font-size: 1.5rem;
+    color: --netflix-white;
     margin-bottom: 3rem;
     max-width: 800px;
     margin-left: auto;
