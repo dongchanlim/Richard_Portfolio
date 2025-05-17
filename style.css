@@ -22,12 +22,12 @@ body {
     overflow-x: hidden;
 }
 
-.hero-banner {
+.hero-banner, .content-section {
     max-width: 1500px;
     margin: 4rem auto;
 }
 
-.intro-section, .content-section {
+.intro-section{
     max-width: 1200px;
     margin: 4rem auto;
 }
@@ -395,7 +395,6 @@ header.scrolled {
 
 /* 콘텐츠 섹션 */
 .content-section {
-    margin: 4rem auto;
     padding: 2rem 4%;
 }
 
