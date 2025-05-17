@@ -279,11 +279,12 @@ header.scrolled {
     opacity: 0.8;
 }
 
-/* 콘텐츠 섹션 */
+/* 인트로 섹션 */
 .content-section {
-    max-width: 1500px;
+    max-width: 1200px;
     margin: 4rem auto;
-    padding: 2rem 4%;
+    padding: 2rem;
+    text-align: center;
 }
 
 .section-title {
