@@ -1,5 +1,5 @@
 :root {
-    --layout-max-width: 1200px;
+    --layout-max-width: 1500px;
     --netflix-red: #e50914;
     --netflix-black: #141414;
     --netflix-dark-gray: #181818;
@@ -70,14 +70,15 @@ header.scrolled {
 
 /* 배너 영역 */
 .hero-banner {
-    max-width: 1200px;
+    max-width: 1500px;
     min-height: 90vh;
     background: linear-gradient(to top, var(--netflix-black) 0%, rgba(20, 20, 20, 0.8) 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0;
-    margin: 4rem auto;
+    margin-left: 3rem auto;
+    margin-right: 3rem auto;
 }
 
 .hero-container {
@@ -126,6 +127,7 @@ header.scrolled {
 
 .profession {
     font-size: 1.3rem;
+    font-weight: bold;
     color: var(--netflix-white);
     margin-bottom: 0.3rem;
 }
@@ -304,14 +306,14 @@ header.scrolled {
 }
 
 .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 500;
     margin-bottom: 0.5rem;
-    color: --netflix-orange;
+    color: --netflix-white;
 }
 
 .highlight {
-    color: #f64f8e;
+    color: --netflix-orange;
 }
 
 .section-subtitle {
