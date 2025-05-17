@@ -328,6 +328,19 @@ header.scrolled {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: --netflix-orange;
+}
+
+.feature-description {
+    font-size: 0.95rem;
+    color: --netflix-medium-gray;
+    line-height: 1.6;
+}
+
 .feature-icon {
     width: 48px;
     height: 48px;
@@ -366,19 +379,6 @@ header.scrolled {
 .icon-star {
     background-color: --netflix-orange;
     color: --netflix-white;
-}
-
-.feature-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-    color: --netflix-white;
-}
-
-.feature-description {
-    font-size: 0.95rem;
-    color: --netflix-medium-gray;
-    line-height: 1.6;
 }
 
 /* 콘텐츠 섹션 */
