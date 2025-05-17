@@ -667,7 +667,7 @@ header.scrolled {
     }
     
     .hero-right {
-        margin-top: 6rem; /* Add extra top margin to account for header */
+        margin-top: 2rem; /* Add extra top margin to account for header */
         margin-bottom: 0;
     }
     
