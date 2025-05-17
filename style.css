@@ -22,6 +22,16 @@ body {
     overflow-x: hidden;
 }
 
+.hero-banner {
+    max-width: 1500px;
+    margin: 4rem auto;
+}
+
+.intro-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+}
+
 /* 헤더 영역 */
 header {
     position: fixed;
@@ -70,14 +80,12 @@ header.scrolled {
 
 /* 배너 영역 */
 .hero-banner {
-    max-width: 1500px;
     min-height: 90vh;
     background: linear-gradient(to top, var(--netflix-black) 0%, rgba(20, 20, 20, 0.8) 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0;
-    margin: 4rem auto;
 }
 
 .hero-container {
@@ -281,8 +289,6 @@ header.scrolled {
 
 /* 인트로 섹션 */
 .intro-section {
-    max-width: 1200px;
-    margin: 4rem auto;
     padding: 2rem;
     text-align: center;
 }
