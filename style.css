@@ -290,11 +290,11 @@ header.scrolled {
     font-size: 3rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: --netflix-white;
+    color: var(--netflix-white);
 }
 
 .highlight {
-    color: --netflix-orange;
+    color: var(--netflix-orange);
 }
 
 .section-subtitle {
@@ -314,7 +314,7 @@ header.scrolled {
 }
 
 .feature-card {
-    background-color: --netflix-medium-gray;
+    background-color: color: var(--netflix-medium-gray);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
@@ -331,13 +331,13 @@ header.scrolled {
 .feature-title {
     font-size: 1.25rem;
     font-weight: 600;
-    font-color: --netflix-orange;
+    color: var(--netflix-white);
     margin-bottom: 0.8rem;
 }
 
 .feature-description {
     font-size: 0.95rem;
-    font-color: --netflix-medium-gray;
+    color: var(--netflix-medium-gray);
     line-height: 1.6;
 }
 
@@ -352,33 +352,33 @@ header.scrolled {
 }
 
 .icon-clipboard {
-    background-color: --netflix-orange;
-    color: --netflix-white;
+    background-color: var(--netflix-orange);
+    color: var(--netflix-white);
 }
 
 .icon-chat {
-    background-color: --netflix-orange;
-    color: --netflix-white;
+    background-color: var(--netflix-orange);
+    color: var(--netflix-white);
 }
 
 .icon-briefcase {
-    background-color: --netflix-orange;
-    color: --netflix-white;
+    background-color: var(--netflix-orange);
+    color: var(--netflix-white);
 }
 
 .icon-chat-bubble {
-    background-color: --netflix-orange;
-    color: --netflix-white;
+    background-color: var(--netflix-orange);
+    color: var(--netflix-white);
 }
 
 .icon-chart {
-    background-color: --netflix-orange;
-    color: --netflix-white;
+    background-color: var(--netflix-orange);
+    color: var(--netflix-white);
 }
 
 .icon-star {
-    background-color: --netflix-orange;
-    color: --netflix-white;
+    background-color: var(--netflix-orange);
+    color: var(--netflix-white);
 }
 
 /* 콘텐츠 섹션 */
