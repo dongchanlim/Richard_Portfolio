@@ -331,7 +331,7 @@ header.scrolled {
 }
 
 .feature-card {
-    background-color: #fff;
+    background-color: --netflix-dark-gray;
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
@@ -356,33 +356,33 @@ header.scrolled {
 }
 
 .icon-clipboard {
-    background-color: #e8f1ff;
-    color: #4281f5;
+    background-color: --netflix-orange;
+    color: --netflix-white;
 }
 
 .icon-chat {
-    background-color: #f8e8ff;
-    color: #a94ff6;
+    background-color: --netflix-orange;
+    color: --netflix-white;
 }
 
 .icon-briefcase {
-    background-color: #e8f0ff;
-    color: #4275f5;
+    background-color: --netflix-orange;
+    color: --netflix-white;
 }
 
 .icon-chat-bubble {
-    background-color: #ffe8f8;
-    color: #f64f8e;
+    background-color: --netflix-orange;
+    color: --netflix-white;
 }
 
 .icon-chart {
-    background-color: #e8fff0;
-    color: #42f57b;
+    background-color: --netflix-orange;
+    color: --netflix-white;
 }
 
 .icon-star {
-    background-color: #fff8e8;
-    color: #f6a94f;
+    background-color: --netflix-orange;
+    color: --netflix-white;
 }
 
 .feature-title {
