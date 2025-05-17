@@ -1,4 +1,5 @@
 :root {
+    --layout-max-width: 1200px;
     --netflix-red: #e50914;
     --netflix-black: #141414;
     --netflix-dark-gray: #181818;
