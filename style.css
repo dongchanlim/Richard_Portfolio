@@ -141,7 +141,7 @@ header.scrolled {
 }
 
 .hero-buttons {
-    display: flex;
+    margin: 1rem auto;
     gap: 1rem;
 }
 
