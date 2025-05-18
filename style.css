@@ -408,7 +408,7 @@ header.scrolled {
     text-align: center;
 }
 
-.section-subtitle {
+.content-subtitle {
     font-size: 1.0rem;
     margin-bottom: 1.0rem;
     color: var(--netflix-light-gray);
