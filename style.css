@@ -405,12 +405,14 @@ header.scrolled {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-weight: 600;
+    text-align: center;
 }
 
 .section-subtitle {
     font-size: 1.0rem;
     margin-bottom: 1.0rem;
     color: var(--netflix-light-gray);
+    text-align: center;
 }
 
 
