@@ -332,6 +332,8 @@ header.scrolled {
     padding: 2rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
     text-align: center;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #f0f0f0;
 }
