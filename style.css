@@ -342,14 +342,14 @@ header.scrolled {
 }
 
 .feature-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--netflix-white);
     margin-bottom: 0.8rem;
 }
 
 .feature-description {
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     color: var(--netflix-light-gray);
     line-height: 1.6;
 }
