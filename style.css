@@ -332,8 +332,6 @@ header.scrolled {
     padding: 2rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
     text-align: center;
-    justify-content: center;
-    align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #f0f0f0;
 }
@@ -363,7 +361,8 @@ header.scrolled {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    # margin-bottom: 1.5rem;
+    margin: 1rem auto;
 }
 
 .icon-clipboard {
