@@ -22,6 +22,7 @@ body {
     overflow-x: hidden;
 }
 
+/* 페이지지 넓이 영역 */
 .hero-banner, .content-section {
     max-width: 1500px;
     margin: 4rem auto;
@@ -176,13 +177,14 @@ header.scrolled {
 
 .intro-section-title {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: bold;
+    color: var(--netflix-orange);
+    text-decoration: none;
 }
 
 .intro-section-subtitle {
-    font-size: 1.0rem;
-    margin-bottom: 1.0rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
     color: var(--netflix-light-gray);
 }
 
