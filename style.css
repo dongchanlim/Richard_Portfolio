@@ -705,7 +705,6 @@ header.scrolled {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero-container {
-        flex-direction: column-reverse;
         text-align: center;
     }
     
