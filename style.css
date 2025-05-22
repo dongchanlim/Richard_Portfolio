@@ -474,8 +474,8 @@ header.scrolled {
 /* 카드 스타일 */
 .card {
     flex: 0 0 auto;
-    width: 400px;
-    height: 280px;
+    width: 300px;
+    height: 220px;
     background-color: var(--netflix-dark-gray);
     border-radius: 4px;
     overflow: hidden;
