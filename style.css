@@ -335,7 +335,7 @@ header.scrolled {
 }
 
 .feature-card {
-    background-color: color: var(--netflix-white);
+    background-color: color: var(--netflix-medium-gray);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
