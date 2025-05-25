@@ -23,12 +23,12 @@ body {
 }
 
 /* 페이지지 넓이 영역 */
-.hero-banner {
+.content-section, .hero-banner {
     max-width: 1500px;
     margin: 4rem auto;
 }
 
-.intro-section, .content-section{
+.intro-section {
     max-width: 1200px;
     margin: 4rem auto;
 }
