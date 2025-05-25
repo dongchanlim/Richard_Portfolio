@@ -463,7 +463,7 @@ header.scrolled {
 /* 카드 슬라이더 */
 .card-slider {
     display: flex;
-    gap: 0.5rem;
+    gap: 2rem;
     overflow-x: auto;
     overflow-y: visible;
     padding: 1.5rem 0;
