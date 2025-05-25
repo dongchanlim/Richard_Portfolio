@@ -247,7 +247,7 @@ header.scrolled {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s ease;
-    border: 1px solid #f0f0f0;
+    border: 1px solid var(--netflix-orange);
 }
 
 .video-card:hover {
