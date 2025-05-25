@@ -22,7 +22,7 @@ body {
     overflow-x: hidden;
 }
 
-/* 페이지지 넓이 영역 */
+/* 페이지 넓이 영역 */
 .content-section, .hero-banner {
     max-width: 1500px;
     margin: 4rem auto;
