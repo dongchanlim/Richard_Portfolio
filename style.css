@@ -212,7 +212,7 @@ header.scrolled {
 .video-slider-container {
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: hidden;    
 }
 
 .video-slider {
@@ -247,6 +247,7 @@ header.scrolled {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s ease;
+    border: 1px solid #f0f0f0;
 }
 
 .video-card:hover {
