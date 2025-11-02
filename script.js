@@ -94,14 +94,65 @@ document.querySelectorAll('.slider-container').forEach(container => {
     const slider = container.querySelector('.card-slider');
     const prevBtn = container.querySelector('.slider-prev');
     const nextBtn = container.querySelector('.slider-next');
-    
+
+    // 수동 컨트롤
     prevBtn.addEventListener('click', () => {
         slider.scrollBy({ left: -800, behavior: 'smooth' });
     });
-    
+
     nextBtn.addEventListener('click', () => {
         slider.scrollBy({ left: 800, behavior: 'smooth' });
     });
+
+    // 자동 슬라이드 설정 (5초마다 오른쪽으로 이동)
+    let autoSlideInterval = setInterval(() => {
+        // 현재 스크롤 위치 확인
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+        if (slider.scrollLeft >= maxScroll - 10) {
+            // 끝에 도달하면 처음으로 돌아감
+            slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            // 오른쪽으로 이동
+            slider.scrollBy({ left: 800, behavior: 'smooth' });
+        }
+    }, 5000);
+
+    // 마우스 오버 시 자동 슬라이드 멈춤
+    container.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+
+    // 마우스 아웃 시 자동 슬라이드 재개
+    container.addEventListener('mouseleave', () => {
+        autoSlideInterval = setInterval(() => {
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+            if (slider.scrollLeft >= maxScroll - 10) {
+                slider.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: 800, behavior: 'smooth' });
+            }
+        }, 5000);
+    });
+
+    // 터치 시작 시 자동 슬라이드 멈춤
+    container.addEventListener('touchstart', () => {
+        clearInterval(autoSlideInterval);
+    }, {passive: true});
+
+    // 터치 종료 시 자동 슬라이드 재개
+    container.addEventListener('touchend', () => {
+        autoSlideInterval = setInterval(() => {
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+            if (slider.scrollLeft >= maxScroll - 10) {
+                slider.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: 800, behavior: 'smooth' });
+            }
+        }, 5000);
+    }, {passive: true});
 });
 
 // 비디오 슬라이더 기능
