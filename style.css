@@ -197,6 +197,7 @@ header.header-stage4 .nav-links a.active {
     align-items: center;
     justify-content: center;
     padding: 0 2%;
+    min-height: 500px;
 }
 
 .hero-content {
@@ -274,9 +275,10 @@ header.header-stage4 .nav-links a.active {
 }
 
 .profile_picture {
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    object-fit: contain;
 }
 
 .highlight {
