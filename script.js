@@ -11,6 +11,7 @@ window.addEventListener('scroll', function() {
 // 섹션 스크롤 기반 색상 변경 효과
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.content-section');
+    const header = document.getElementById('header');
 
     const observerOptions = {
         root: null,
@@ -27,6 +28,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 // Add active class to the current section
                 entry.target.classList.add('section-active');
+
+                // Update header color based on active section
+                header.classList.remove('header-stage1', 'header-stage2', 'header-stage3', 'header-stage4');
+
+                if (entry.target.classList.contains('stage1')) {
+                    header.classList.add('header-stage1');
+                } else if (entry.target.classList.contains('stage2')) {
+                    header.classList.add('header-stage2');
+                } else if (entry.target.classList.contains('stage3')) {
+                    header.classList.add('header-stage3');
+                } else if (entry.target.classList.contains('stage4')) {
+                    header.classList.add('header-stage4');
+                }
 
                 // Update nav links
                 const sectionId = entry.target.getAttribute('id');
