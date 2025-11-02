@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (subtitleElement) {
         const text = subtitleElement.textContent;
         subtitleElement.textContent = '';
-        subtitleElement.style.borderRight = '2px solid #00C4FF';
-        subtitleElement.style.paddingRight = '5px';
 
         let charIndex = 0;
         const typingSpeed = 50; // milliseconds per character
@@ -15,11 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 subtitleElement.textContent += text.charAt(charIndex);
                 charIndex++;
                 setTimeout(typeWriter, typingSpeed);
-            } else {
-                // Remove cursor after typing is complete
-                setTimeout(() => {
-                    subtitleElement.style.borderRight = 'none';
-                }, 500);
             }
         }
 
