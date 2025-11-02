@@ -1,3 +1,33 @@
+// Typewriter effect for hero subtitle
+document.addEventListener('DOMContentLoaded', function() {
+    const subtitleElement = document.querySelector('.hero-subtitle');
+    if (subtitleElement) {
+        const text = subtitleElement.textContent;
+        subtitleElement.textContent = '';
+        subtitleElement.style.borderRight = '2px solid #00C4FF';
+        subtitleElement.style.paddingRight = '5px';
+
+        let charIndex = 0;
+        const typingSpeed = 50; // milliseconds per character
+
+        function typeWriter() {
+            if (charIndex < text.length) {
+                subtitleElement.textContent += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, typingSpeed);
+            } else {
+                // Remove cursor after typing is complete
+                setTimeout(() => {
+                    subtitleElement.style.borderRight = 'none';
+                }, 500);
+            }
+        }
+
+        // Start typing effect
+        typeWriter();
+    }
+});
+
 // 헤더 스크롤 효과
 window.addEventListener('scroll', function() {
     const header = document.getElementById('header');
