@@ -1,4 +1,4 @@
-// Typewriter effect for hero subtitle
+// 히어로 서브 타이틀 타이프라이터 효괴
 document.addEventListener('DOMContentLoaded', function() {
     const subtitleElement = document.querySelector('.hero-subtitle');
     if (subtitleElement) {
@@ -31,7 +31,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// 섹션 스크롤 기반 색상 변경 효과
+// 섹션 스크롤 기반 섹션 헤더 색상 변경 효과
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.content-section');
     const header = document.getElementById('header');
