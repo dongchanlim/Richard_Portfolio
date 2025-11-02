@@ -1,3 +1,45 @@
+/* ============================================================================
+   TABLE OF CONTENTS
+   ============================================================================
+   1. Base Styles
+      - CSS Variables
+      - Global Resets
+      - Body & Typography
+
+   2. Layout
+      - Container & Width Management
+      - Section Spacing
+
+   3. Components
+      - Header & Navigation
+      - Hero Banner
+      - Intro Section
+      - Video Slider
+      - Features Grid
+      - Content Sections
+      - Card Slider & Cards
+      - Modal
+      - Buttons
+      - Footer
+
+   4. Utilities
+      - Stage Colors & Effects
+      - Icons
+
+   5. Responsive Design
+      - Large Desktop (max-width: 1024px)
+      - Tablet (max-width: 992px)
+      - Mobile Landscape (max-width: 768px)
+      - Mobile Portrait (max-width: 576px)
+      - Small Mobile (max-width: 480px)
+============================================================================ */
+
+
+/* ============================================================================
+   1. BASE STYLES
+============================================================================ */
+
+/* CSS Variables */
 :root {
     --layout-max-width: 1500px;
     --netflix-red: #e50914;
@@ -9,6 +51,7 @@
     --netflix-orange: #f5751d;
 }
 
+/* Global Resets */
 * {
     margin: 0;
     padding: 0;
@@ -16,14 +59,21 @@
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* Body & Typography */
 body {
     background-color: var(--netflix-black);
     color: var(--netflix-white);
     overflow-x: hidden;
 }
 
-/* 페이지 넓이 영역 */
-.content-section, .hero-banner {
+
+/* ============================================================================
+   2. LAYOUT
+============================================================================ */
+
+/* Container & Width Management */
+.content-section,
+.hero-banner {
     max-width: 1500px;
     margin: 4rem auto;
 }
@@ -33,7 +83,13 @@ body {
     margin: 4rem auto;
 }
 
-/* 헤더 영역 */
+
+/* ============================================================================
+   3. COMPONENTS
+============================================================================ */
+
+/* Header & Navigation
+   -------------------------------------------------------------------------- */
 header {
     position: fixed;
     top: 0;
@@ -80,8 +136,7 @@ header.scrolled {
     color: var(--netflix-orange);
 }
 
-/* Header color changes based on active section */
-/* Logo color is fixed to netflix-orange */
+/* Header Dynamic Color Effects */
 header.header-stage1 .logo,
 header.header-stage2 .logo,
 header.header-stage3 .logo,
@@ -110,7 +165,9 @@ header.header-stage4 .nav-links a.active {
     text-shadow: 0 0 10px rgba(155, 89, 182, 0.3);
 }
 
-/* 배너 영역 */
+
+/* Hero Banner
+   -------------------------------------------------------------------------- */
 .hero-banner {
     min-height: 25vh;
     background: linear-gradient(to top, var(--netflix-black) 0%, rgba(20, 20, 20, 0.8) 100%);
@@ -176,37 +233,9 @@ header.header-stage4 .nav-links a.active {
     gap: 1rem;
 }
 
-.btn {
-    padding: 0.7rem 1.5rem;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    font-size: 1rem;
-}
 
-.btn-primary {
-    background-color: var(--netflix-orange);
-    color: white;
-}
-
-.btn-secondary {
-    background-color: rgba(109, 109, 110, 0.7);
-    color: white;
-}
-
-.btn:hover {
-    opacity: 0.8;
-}
-
-/* 인트로 섹션 */
-.profile_picture {
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
-}
-
+/* Intro Section
+   -------------------------------------------------------------------------- */
 .intro-section {
     padding: 2rem;
     text-align: center;
@@ -221,16 +250,6 @@ header.header-stage4 .nav-links a.active {
 
 .intro-section-subtitle {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--netflix-light-gray);
-}
-
-.highlight {
-    color: var(--netflix-orange);
-}
-
-.intro-section-subtitle {
-    font-size: 1.5rem;
     color: var(--netflix-light-gray);
     margin-bottom: 3rem;
     max-width: 800px;
@@ -238,12 +257,23 @@ header.header-stage4 .nav-links a.active {
     margin-right: auto;
 }
 
+.profile_picture {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
 
-/* 비디오 슬라이더 */
+.highlight {
+    color: var(--netflix-orange);
+}
+
+
+/* Video Slider
+   -------------------------------------------------------------------------- */
 .video-slider-container {
     width: 100%;
     position: relative;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 .video-slider {
@@ -359,6 +389,9 @@ header.header-stage4 .nav-links a.active {
     background-color: var(--netflix-red);
 }
 
+
+/* Features Grid
+   -------------------------------------------------------------------------- */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -404,37 +437,9 @@ header.header-stage4 .nav-links a.active {
     margin: 1rem auto;
 }
 
-.icon-clipboard {
-    background-color: var(--netflix-orange);
-    color: var(--netflix-white);
-}
 
-.icon-chat {
-    background-color: var(--netflix-orange);
-    color: var(--netflix-white);
-}
-
-.icon-briefcase {
-    background-color: var(--netflix-orange);
-    color: var(--netflix-white);
-}
-
-.icon-chat-bubble {
-    background-color: var(--netflix-orange);
-    color: var(--netflix-white);
-}
-
-.icon-chart {
-    background-color: var(--netflix-orange);
-    color: var(--netflix-white);
-}
-
-.icon-star {
-    background-color: var(--netflix-orange);
-    color: var(--netflix-white);
-}
-
-/* 콘텐츠 섹션 */
+/* Content Sections
+   -------------------------------------------------------------------------- */
 .content-section {
     padding: 2rem;
 }
@@ -448,7 +453,14 @@ header.header-stage4 .nav-links a.active {
     transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
-/* Section title color changes based on scroll position */
+.content-subtitle {
+    font-size: 1.0rem;
+    margin-bottom: 1.0rem;
+    color: var(--netflix-light-gray);
+    text-align: center;
+}
+
+/* Section Title Dynamic Colors */
 .stage1.section-active .section-title {
     color: #3498db;
     text-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
@@ -469,16 +481,9 @@ header.header-stage4 .nav-links a.active {
     text-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
 }
 
-.content-subtitle {
-    font-size: 1.0rem;
-    margin-bottom: 1.0rem;
-    color: var(--netflix-light-gray);
-    text-align: center;
-}
 
-
-
-/* 슬라이더 컨테이너 */
+/* Card Slider & Cards
+   -------------------------------------------------------------------------- */
 .slider-container {
     position: relative;
 }
@@ -515,7 +520,6 @@ header.header-stage4 .nav-links a.active {
     color: white;
 }
 
-/* 카드 슬라이더 */
 .card-slider {
     display: flex;
     gap: 2rem;
@@ -523,7 +527,6 @@ header.header-stage4 .nav-links a.active {
     overflow-y: visible;
     padding: 1.5rem 0;
     scroll-behavior: smooth;
-    /* Hide scrollbar */
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -532,7 +535,6 @@ header.header-stage4 .nav-links a.active {
     display: none;
 }
 
-/* 카드 스타일 */
 .card {
     flex: 0 0 auto;
     width: 300px;
@@ -617,7 +619,8 @@ header.header-stage4 .nav-links a.active {
 }
 
 
-/* 모달 */
+/* Modal
+   -------------------------------------------------------------------------- */
 .modal {
     position: fixed;
     top: 0;
@@ -736,7 +739,75 @@ header.header-stage4 .nav-links a.active {
     z-index: 10;
 }
 
-/* 단계별 스타일 색상 */
+
+/* Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--netflix-orange);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: rgba(109, 109, 110, 0.7);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+
+/* Footer
+   -------------------------------------------------------------------------- */
+footer {
+    padding: 2rem 4%;
+    background-color: var(--netflix-black);
+    color: var(--netflix-light-gray);
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.footer-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--netflix-light-gray);
+}
+
+.social-links {
+    font-size: 1rem;
+    color: var(--netflix-light-gray);
+    margin-bottom: 0.3rem;
+}
+
+.social-links a {
+    color: var(--netflix-light-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--netflix-orange);
+    text-decoration: underline;
+}
+
+
+/* ============================================================================
+   4. UTILITIES
+============================================================================ */
+
+/* Stage Colors & Effects
+   -------------------------------------------------------------------------- */
 .stage1 {
     --stage-color: #3498db;
 }
@@ -763,31 +834,54 @@ header.header-stage4 .nav-links a.active {
     margin-right: 0.5rem;
 }
 
-/* Responsive Design */
+
+/* Icons
+   -------------------------------------------------------------------------- */
+.icon-clipboard,
+.icon-chat,
+.icon-briefcase,
+.icon-chat-bubble,
+.icon-chart,
+.icon-star {
+    background-color: var(--netflix-orange);
+    color: var(--netflix-white);
+}
+
+
+/* ============================================================================
+   5. RESPONSIVE DESIGN
+============================================================================ */
+
+/* Large Desktop - max-width: 1024px
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
     .hero-container {
         text-align: center;
     }
-    
-    .hero-left, .hero-right {
+
+    .hero-left,
+    .hero-right {
         width: 100%;
         padding: 0 4%;
     }
-    
+
     .hero-right {
         margin-top: 2rem;
         margin-bottom: 2rem;
     }
-    
+
     .video-slider {
         height: 350px;
     }
-    
+
     .hero-content {
         margin-top: 5vh;
     }
 }
 
+
+/* Tablet - max-width: 992px
+   -------------------------------------------------------------------------- */
 @media (max-width: 992px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -795,11 +889,13 @@ header.header-stage4 .nav-links a.active {
 }
 
 
+/* Mobile Landscape - max-width: 768px
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
     }
-    
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -813,19 +909,19 @@ header.header-stage4 .nav-links a.active {
         transition: right 0.3s ease;
         z-index: 101;
     }
-    
+
     .nav-links.active {
         right: 0;
     }
-    
+
     .nav-links li {
         margin: 1.5rem 0;
     }
-    
+
     .nav-links a {
         font-size: 1.1rem;
     }
-    
+
     .hero-banner {
         min-height: auto;
         padding: 80px 0 40px 0;
@@ -834,79 +930,80 @@ header.header-stage4 .nav-links a.active {
     .hero-container {
         flex-direction: column-reverse;
     }
-    
+
     .hero-left {
         margin-top: 2rem;
     }
-    
+
     .hero-right {
-        margin-top: 2rem; /* Add extra top margin to account for header */
+        margin-top: 2rem;
         margin-bottom: 0;
     }
-    
+
     .hero-title {
         font-size: 2.2rem;
     }
-    
+
     .profession {
         font-size: 1.1rem;
     }
-    
-    .contact-info, .social-links {
+
+    .contact-info,
+    .social-links {
         font-size: 0.9rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1rem;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.8rem;
     }
-    
+
     .video-slider {
         height: 250px;
     }
-    
+
     .video-slider-controls {
         margin-top: 10px;
     }
-    
+
     .video-slider-btn {
         width: 36px;
         height: 36px;
     }
-    
+
     .dot {
         width: 8px;
         height: 8px;
     }
-    
+
     .play-button {
         width: 48px;
         height: 48px;
     }
-    
+
     .play-button i {
         font-size: 1.2rem;
     }
-    
+
     .video-title {
         font-size: 1rem;
         padding: 0.7rem;
     }
-    
+
     .card {
         width: 360px;
         height: 220px;
     }
-    
+
     .modal-title {
         font-size: 1.6rem;
     }
-    
+
     .modal-header {
         height: 200px;
     }
@@ -920,6 +1017,9 @@ header.header-stage4 .nav-links a.active {
     }
 }
 
+
+/* Mobile Portrait - max-width: 576px
+   -------------------------------------------------------------------------- */
 @media (max-width: 576px) {
     .features-grid {
         grid-template-columns: 1fr;
@@ -930,84 +1030,55 @@ header.header-stage4 .nav-links a.active {
     }
 }
 
+
+/* Small Mobile - max-width: 480px
+   -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
     .hero-banner {
         padding: 70px 0 30px 0;
     }
-    
+
     .hero-title {
         font-size: 1.8rem;
     }
-    
+
     .profession {
         font-size: 1rem;
     }
-    
-    .contact-info, .social-links {
+
+    .contact-info,
+    .social-links {
         font-size: 0.8rem;
     }
-    
+
     .hero-subtitle {
         font-size: 0.9rem;
         margin-bottom: 1rem;
     }
-    
+
     .btn {
         width: 100%;
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
     }
-    
+
     .video-slider {
         height: 200px;
     }
-    
+
     .hero-content {
         margin-top: 2vh;
     }
-    
+
     .nav-links li {
         margin-left: 0.8rem;
     }
-    
+
     .nav-links a {
         font-size: 0.8rem;
     }
-    
+
     .logo {
         font-size: 1.5rem;
     }
-}
-
-/* 하단 푸터 */
-footer-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--netflix-light-gray);
-}
-
-.social-links {
-    font-size: 1rem;
-    color: var(--netflix-light-gray);
-    margin-bottom: 0.3rem;
-}
-
-.social-links a {
-    color: var(--netflix-light-gray);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: var(--netflix-orange);
-    text-decoration: underline;
-}
-
-footer {
-    padding: 2rem 4%;
-    background-color: var(--netflix-black);
-    color: var(--netflix-light-gray);
-    font-size: 0.8rem;
-    text-align: center;
-    margin-top: 2rem;
 }
