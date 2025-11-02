@@ -8,6 +8,46 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// 섹션 스크롤 기반 색상 변경 효과
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.content-section');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px',
+        threshold: 0.3
+    };
+
+    const sectionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active class from all sections
+                sections.forEach(section => {
+                    section.classList.remove('section-active');
+                });
+                // Add active class to the current section
+                entry.target.classList.add('section-active');
+
+                // Update nav links
+                const sectionId = entry.target.getAttribute('id');
+                if (sectionId) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+});
+
 // 모바일 메뉴 토글
 document.addEventListener('DOMContentLoaded', function() {
     const menuBtn = document.querySelector('.mobile-menu-btn');
