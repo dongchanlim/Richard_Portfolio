@@ -408,28 +408,44 @@ header.header-stage4 .nav-links a.active {
 }
 
 
-/* Features Grid
+/* Features Grid (Slider Mask)
    -------------------------------------------------------------------------- */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+.features-slider-container {
+    position: relative;
     margin-top: 2rem;
 }
 
+.features-grid {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 1.5rem 0;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.features-grid::-webkit-scrollbar {
+    display: none;
+}
+
 .feature-card {
-    background-color: color: var(--netflix-medium-gray);
+    flex: 0 0 auto;
+    width: 350px;
+    min-height: 280px;
+    background-color: var(--netflix-dark-gray);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #fffffe1;
+    border: 1px solid #ffffff11;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(245, 117, 29, 0.2);
 }
 
 .feature-title {
@@ -453,6 +469,35 @@ header.header-stage4 .nav-links a.active {
     align-items: center;
     justify-content: center;
     margin: 1rem auto;
+}
+
+.features-slider-prev,
+.features-slider-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.features-slider-container:hover .features-slider-prev,
+.features-slider-container:hover .features-slider-next {
+    opacity: 1;
+}
+
+.features-slider-prev {
+    left: 0;
+}
+
+.features-slider-next {
+    right: 0;
 }
 
 
@@ -901,8 +946,9 @@ footer {
 /* Tablet - max-width: 992px
    -------------------------------------------------------------------------- */
 @media (max-width: 992px) {
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .feature-card {
+        width: 300px;
+        min-height: 250px;
     }
 }
 
@@ -1040,12 +1086,15 @@ footer {
 /* Mobile Portrait - max-width: 576px
    -------------------------------------------------------------------------- */
 @media (max-width: 576px) {
-    .features-grid {
-        grid-template-columns: 1fr;
+    .feature-card {
+        width: 280px;
+        min-height: 260px;
+        padding: 1.5rem;
     }
 
-    .feature-card {
-        padding: 1.5rem;
+    .features-slider-prev,
+    .features-slider-next {
+        width: 8%;
     }
 }
 
