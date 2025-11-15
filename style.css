@@ -1012,6 +1012,10 @@ footer {
         font-size: 2.2rem;
     }
 
+    .profession-badges {
+        justify-content: center;
+    }
+
     .profession-badges .badge {
         font-size: 0.8rem;
         padding: 0.4rem 0.9rem;
@@ -1161,6 +1165,10 @@ footer {
 
     .hero-title {
         font-size: 1.8rem;
+    }
+
+    .profession-badges {
+        justify-content: center;
     }
 
     .profession-badges .badge {
