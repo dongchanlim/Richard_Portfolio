@@ -413,6 +413,10 @@ header.header-stage4 .nav-links a.active {
 .features-slider-container {
     position: relative;
     margin-top: 2rem;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 .features-grid {
