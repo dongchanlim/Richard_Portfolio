@@ -178,6 +178,75 @@ document.querySelectorAll('.slider-container').forEach(container => {
     }, {passive: true});
 });
 
+// 피처 슬라이더 컨트롤
+document.addEventListener('DOMContentLoaded', function() {
+    const featuresContainer = document.querySelector('.features-slider-container');
+
+    if (featuresContainer) {
+        const featuresSlider = featuresContainer.querySelector('.features-grid');
+        const prevBtn = featuresContainer.querySelector('.features-slider-prev');
+        const nextBtn = featuresContainer.querySelector('.features-slider-next');
+
+        if (featuresSlider && prevBtn && nextBtn) {
+            // 수동 컨트롤
+            prevBtn.addEventListener('click', () => {
+                featuresSlider.scrollBy({ left: -400, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                featuresSlider.scrollBy({ left: 400, behavior: 'smooth' });
+            });
+
+            // 자동 슬라이드 설정 (5초마다 오른쪽으로 이동)
+            let autoSlideInterval = setInterval(() => {
+                const maxScroll = featuresSlider.scrollWidth - featuresSlider.clientWidth;
+
+                if (featuresSlider.scrollLeft >= maxScroll - 10) {
+                    featuresSlider.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    featuresSlider.scrollBy({ left: 400, behavior: 'smooth' });
+                }
+            }, 5000);
+
+            // 마우스 오버 시 자동 슬라이드 멈춤
+            featuresContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+
+            // 마우스 아웃 시 자동 슬라이드 재개
+            featuresContainer.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(() => {
+                    const maxScroll = featuresSlider.scrollWidth - featuresSlider.clientWidth;
+
+                    if (featuresSlider.scrollLeft >= maxScroll - 10) {
+                        featuresSlider.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        featuresSlider.scrollBy({ left: 400, behavior: 'smooth' });
+                    }
+                }, 5000);
+            });
+
+            // 터치 시작 시 자동 슬라이드 멈춤
+            featuresContainer.addEventListener('touchstart', () => {
+                clearInterval(autoSlideInterval);
+            }, {passive: true});
+
+            // 터치 종료 시 자동 슬라이드 재개
+            featuresContainer.addEventListener('touchend', () => {
+                autoSlideInterval = setInterval(() => {
+                    const maxScroll = featuresSlider.scrollWidth - featuresSlider.clientWidth;
+
+                    if (featuresSlider.scrollLeft >= maxScroll - 10) {
+                        featuresSlider.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        featuresSlider.scrollBy({ left: 400, behavior: 'smooth' });
+                    }
+                }, 5000);
+            }, {passive: true});
+        }
+    }
+});
+
 // 비디오 슬라이더 기능
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.video-slide');
