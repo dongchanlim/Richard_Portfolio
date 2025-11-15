@@ -1084,6 +1084,30 @@ footer {
     .section-subtitle {
         font-size: 1rem;
     }
+
+    /* Feature slider mobile adjustments */
+    .features-slider-container {
+        padding: 0 1rem;
+    }
+
+    .feature-card {
+        width: 320px;
+        min-height: 300px;
+        padding: 1.8rem;
+    }
+
+    .features-grid {
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .feature-title {
+        font-size: 1.3rem;
+    }
+
+    .feature-description {
+        font-size: 0.95rem;
+    }
 }
 
 
@@ -1091,14 +1115,39 @@ footer {
    -------------------------------------------------------------------------- */
 @media (max-width: 576px) {
     .feature-card {
-        width: 280px;
-        min-height: 260px;
+        width: calc(100vw - 80px);
+        max-width: 300px;
+        min-height: 320px;
         padding: 1.5rem;
+    }
+
+    .features-slider-container {
+        padding: 0 0.5rem;
+    }
+
+    .features-grid {
+        gap: 0.8rem;
     }
 
     .features-slider-prev,
     .features-slider-next {
-        width: 8%;
+        width: 10%;
+    }
+
+    .feature-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .feature-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        margin: 0.8rem auto;
     }
 }
 
@@ -1153,5 +1202,30 @@ footer {
 
     .logo {
         font-size: 1.5rem;
+    }
+
+    /* Very small screens - ensure full card visibility */
+    .feature-card {
+        width: calc(100vw - 60px);
+        max-width: 280px;
+        min-height: 340px;
+        padding: 1.3rem;
+    }
+
+    .features-slider-container {
+        padding: 0 0.25rem;
+    }
+
+    .feature-title {
+        font-size: 1.1rem;
+    }
+
+    .feature-description {
+        font-size: 0.85rem;
+    }
+
+    .features-slider-prev,
+    .features-slider-next {
+        width: 12%;
     }
 }
