@@ -359,6 +359,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Video slide modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const videoSlides = document.querySelectorAll('.video-slide');
+    const videoModal = document.getElementById('video-slide-modal');
+    const videoModalImage = document.getElementById('video-modal-image');
+    const videoModalTitle = document.getElementById('video-modal-title');
+
+    videoSlides.forEach(slide => {
+        slide.addEventListener('click', () => {
+            const thumbnail = slide.querySelector('.video-thumbnail');
+            const title = slide.querySelector('.video-title');
+
+            if (thumbnail && title) {
+                videoModalImage.src = thumbnail.src;
+                videoModalTitle.textContent = title.textContent;
+            }
+
+            if (videoModal) {
+                videoModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+});
+
 // 모달 기능
 const cards = document.querySelectorAll('.card');
 const modals = document.querySelectorAll('.modal');
