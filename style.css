@@ -370,6 +370,14 @@ header.header-stage4 .nav-links a.active {
     margin-top: 20px;
 }
 
+/* Video slider controls inside modal */
+#video-slide-modal .video-slider-controls {
+    margin-top: 0;
+    padding: 1rem 2rem;
+    background-color: var(--netflix-dark-gray);
+    border-top: 1px solid var(--netflix-medium-gray);
+}
+
 .video-slider-btn {
     background: rgba(255,255,255,0.2);
     border: none;

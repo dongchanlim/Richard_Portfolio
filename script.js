@@ -250,36 +250,13 @@ document.addEventListener('DOMContentLoaded', function() {
 // 비디오 슬라이더 기능
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.video-slide');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.video-slider-btn.prev');
-    const nextBtn = document.querySelector('.video-slider-btn.next');
     let currentIndex = 0;
-    
+
     // 초기 슬라이드 설정
-    updateSlider();
-    
-    // 다음 슬라이드 버튼
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlider();
-    });
-    
-    // 이전 슬라이드 버튼
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateSlider();
-    });
-    
-    // 점(dot) 클릭 이벤트
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            currentIndex = parseInt(dot.getAttribute('data-index'));
-            updateSlider();
-        });
-    });
-    
-    // 슬라이더 업데이트 함수
-    function updateSlider() {
+    updateMainSlider();
+
+    // 슬라이더 업데이트 함수 (main page slider only)
+    function updateMainSlider() {
         slides.forEach((slide, index) => {
             if (index === currentIndex) {
                 slide.classList.add('active');
@@ -287,94 +264,134 @@ document.addEventListener('DOMContentLoaded', function() {
                 slide.classList.remove('active');
             }
         });
-        
-        dots.forEach((dot, index) => {
-            if (index === currentIndex) {
+    }
+
+    // 자동 슬라이드 설정 (5초마다)
+    let slideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateMainSlider();
+    }, 5000);
+
+    // 마우스 오버 또는 터치 시 자동 슬라이드 멈춤
+    const sliderContainer = document.querySelector('.video-slider-container');
+
+    if (sliderContainer) {
+        // 마우스 이벤트
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateMainSlider();
+            }, 5000);
+        });
+
+        // 터치 이벤트
+        sliderContainer.addEventListener('touchstart', () => {
+            clearInterval(slideInterval);
+        }, {passive: true});
+
+        sliderContainer.addEventListener('touchend', () => {
+            slideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateMainSlider();
+            }, 5000);
+        }, {passive: true});
+
+        // 스와이프 기능 추가
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        sliderContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        sliderContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            // 75px 이상 차이가 나면 스와이프로 인식
+            if (touchEndX < touchStartX - 75) {
+                // 왼쪽으로 스와이프
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateMainSlider();
+            } else if (touchEndX > touchStartX + 75) {
+                // 오른쪽으로 스와이프
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateMainSlider();
+            }
+        }
+    }
+
+    // Video slide modal functionality with slider controls
+    const videoSlides = document.querySelectorAll('.video-slide');
+    const videoModal = document.getElementById('video-slide-modal');
+    const videoModalImage = document.getElementById('video-modal-image');
+    const videoModalTitle = document.getElementById('video-modal-title');
+    const modalDots = videoModal ? videoModal.querySelectorAll('.video-slider-dots .dot') : [];
+    const modalPrevBtn = videoModal ? videoModal.querySelector('.video-slider-btn.prev') : null;
+    const modalNextBtn = videoModal ? videoModal.querySelector('.video-slider-btn.next') : null;
+
+    let modalCurrentIndex = 0;
+
+    // Update modal content based on current index
+    function updateModalContent() {
+        const currentSlide = slides[modalCurrentIndex];
+        if (currentSlide) {
+            const thumbnail = currentSlide.querySelector('.video-thumbnail');
+            const title = currentSlide.querySelector('.video-title');
+
+            if (thumbnail && videoModalImage) {
+                videoModalImage.src = thumbnail.src;
+            }
+            if (title && videoModalTitle) {
+                videoModalTitle.textContent = title.textContent;
+            }
+        }
+
+        // Update dots
+        modalDots.forEach((dot, index) => {
+            if (index === modalCurrentIndex) {
                 dot.classList.add('active');
             } else {
                 dot.classList.remove('active');
             }
         });
     }
-    
-    // 자동 슬라이드 설정 (5초마다)
-    let slideInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlider();
-    }, 5000);
-    
-    // 마우스 오버 또는 터치 시 자동 슬라이드 멈춤
-    const sliderContainer = document.querySelector('.video-slider-container');
-    
-    if (sliderContainer) {
-        // 마우스 이벤트
-        sliderContainer.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
+
+    // Modal prev button
+    if (modalPrevBtn) {
+        modalPrevBtn.addEventListener('click', () => {
+            modalCurrentIndex = (modalCurrentIndex - 1 + slides.length) % slides.length;
+            updateModalContent();
         });
-        
-        sliderContainer.addEventListener('mouseleave', () => {
-            slideInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % slides.length;
-                updateSlider();
-            }, 5000);
-        });
-        
-        // 터치 이벤트
-        sliderContainer.addEventListener('touchstart', () => {
-            clearInterval(slideInterval);
-        }, {passive: true});
-        
-        sliderContainer.addEventListener('touchend', () => {
-            slideInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % slides.length;
-                updateSlider();
-            }, 5000);
-        }, {passive: true});
-        
-        // 스와이프 기능 추가
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        sliderContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-        
-        sliderContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, {passive: true});
-        
-        function handleSwipe() {
-            // 75px 이상 차이가 나면 스와이프로 인식
-            if (touchEndX < touchStartX - 75) {
-                // 왼쪽으로 스와이프
-                currentIndex = (currentIndex + 1) % slides.length;
-                updateSlider();
-            } else if (touchEndX > touchStartX + 75) {
-                // 오른쪽으로 스와이프
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                updateSlider();
-            }
-        }
     }
-});
 
-// Video slide modal functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const videoSlides = document.querySelectorAll('.video-slide');
-    const videoModal = document.getElementById('video-slide-modal');
-    const videoModalImage = document.getElementById('video-modal-image');
-    const videoModalTitle = document.getElementById('video-modal-title');
+    // Modal next button
+    if (modalNextBtn) {
+        modalNextBtn.addEventListener('click', () => {
+            modalCurrentIndex = (modalCurrentIndex + 1) % slides.length;
+            updateModalContent();
+        });
+    }
 
-    videoSlides.forEach(slide => {
+    // Modal dot click events
+    modalDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            modalCurrentIndex = parseInt(dot.getAttribute('data-index'));
+            updateModalContent();
+        });
+    });
+
+    // Open modal when video slide is clicked
+    videoSlides.forEach((slide, index) => {
         slide.addEventListener('click', () => {
-            const thumbnail = slide.querySelector('.video-thumbnail');
-            const title = slide.querySelector('.video-title');
-
-            if (thumbnail && title) {
-                videoModalImage.src = thumbnail.src;
-                videoModalTitle.textContent = title.textContent;
-            }
+            modalCurrentIndex = index;
+            updateModalContent();
 
             if (videoModal) {
                 videoModal.style.display = 'flex';
