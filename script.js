@@ -389,18 +389,69 @@ const cards = document.querySelectorAll('.card');
 const modals = document.querySelectorAll('.modal');
 const closeBtns = document.querySelectorAll('.modal-close');
 
+// Card info modal elements
+const cardInfoModal = document.getElementById('card-info-modal');
+const cardModalImage = document.getElementById('card-modal-image');
+const cardModalTitle = document.getElementById('card-modal-title');
+const cardModalSubtitle = document.getElementById('card-modal-subtitle');
+const cardModalTags = document.getElementById('card-modal-tags');
+const cardModalDescription = document.getElementById('card-modal-description');
+
 cards.forEach(card => {
     card.addEventListener('click', () => {
-        const modalId = card.getAttribute('data-modal');
-        const modal = document.getElementById(`${modalId}-modal`);
-        if (modal) {
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        } else {
-            // Python 모달을 대체로 보여줌
-            document.getElementById('python-modal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+        // Extract card content
+        const cardImage = card.querySelector('.card-image');
+        const cardOverlay = card.querySelector('.card-overlay');
+        const cardInfo = card.querySelector('.card-info');
+
+        // Get overlay info
+        const overlayTitle = cardOverlay ? cardOverlay.querySelector('.card-title') : null;
+        const overlaySubtitle = cardOverlay ? cardOverlay.querySelector('.card-subtitle') : null;
+        const stageIndicator = cardOverlay ? cardOverlay.querySelector('.stage-indicator') : null;
+
+        // Get card-info content
+        const infoTitle = cardInfo ? cardInfo.querySelector('.card-title') : null;
+        const infoTags = cardInfo ? cardInfo.querySelector('.card-tags') : null;
+        const infoDescription = cardInfo ? cardInfo.querySelector('.card-description') : null;
+
+        // Populate modal with card content
+        if (cardImage) {
+            cardModalImage.src = cardImage.src;
         }
+
+        // Use card-info title if available, otherwise use overlay title
+        if (infoTitle) {
+            cardModalTitle.textContent = infoTitle.textContent;
+        } else if (overlayTitle) {
+            cardModalTitle.textContent = overlayTitle.textContent;
+        }
+
+        // Set subtitle from overlay
+        if (overlaySubtitle) {
+            cardModalSubtitle.textContent = overlaySubtitle.textContent;
+        } else if (stageIndicator) {
+            cardModalSubtitle.textContent = stageIndicator.textContent;
+        } else {
+            cardModalSubtitle.textContent = '';
+        }
+
+        // Set tags
+        if (infoTags) {
+            cardModalTags.innerHTML = infoTags.innerHTML;
+        } else {
+            cardModalTags.innerHTML = '';
+        }
+
+        // Set description
+        if (infoDescription) {
+            cardModalDescription.textContent = infoDescription.textContent;
+        } else {
+            cardModalDescription.textContent = '';
+        }
+
+        // Show the card info modal
+        cardInfoModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     });
 });
 

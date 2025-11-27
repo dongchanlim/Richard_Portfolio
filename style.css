@@ -620,9 +620,10 @@ header.header-stage4 .nav-links a.active {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
+/* Card info is now displayed in modal, hide it on cards */
 .card:hover .card-info {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(100%);
 }
 
 .card-image {
@@ -741,6 +742,12 @@ header.header-stage4 .nav-links a.active {
 
 .modal-title {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-subtitle {
+    font-size: 1rem;
+    color: var(--netflix-light-gray);
     margin-bottom: 1rem;
 }
 
