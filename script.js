@@ -396,58 +396,128 @@ const cardModalTitle = document.getElementById('card-modal-title');
 const cardModalSubtitle = document.getElementById('card-modal-subtitle');
 const cardModalTags = document.getElementById('card-modal-tags');
 const cardModalDescription = document.getElementById('card-modal-description');
+const modalPrevBtn = document.getElementById('modal-prev-btn');
+const modalNextBtn = document.getElementById('modal-next-btn');
+const modalSliderDots = document.getElementById('modal-slider-dots');
+
+// Track current section cards and index
+let currentSectionCards = [];
+let currentCardIndex = 0;
+
+// Function to populate modal with card content
+function populateModal(card) {
+    const cardImage = card.querySelector('.card-image');
+    const cardOverlay = card.querySelector('.card-overlay');
+    const cardInfo = card.querySelector('.card-info');
+
+    // Get overlay info
+    const overlayTitle = cardOverlay ? cardOverlay.querySelector('.card-title') : null;
+    const overlaySubtitle = cardOverlay ? cardOverlay.querySelector('.card-subtitle') : null;
+    const stageIndicator = cardOverlay ? cardOverlay.querySelector('.stage-indicator') : null;
+
+    // Get card-info content
+    const infoTitle = cardInfo ? cardInfo.querySelector('.card-title') : null;
+    const infoTags = cardInfo ? cardInfo.querySelector('.card-tags') : null;
+    const infoDescription = cardInfo ? cardInfo.querySelector('.card-description') : null;
+
+    // Populate modal with card content
+    if (cardImage) {
+        cardModalImage.src = cardImage.src;
+    }
+
+    // Use card-info title if available, otherwise use overlay title
+    if (infoTitle) {
+        cardModalTitle.textContent = infoTitle.textContent;
+    } else if (overlayTitle) {
+        cardModalTitle.textContent = overlayTitle.textContent;
+    }
+
+    // Set subtitle from overlay
+    if (overlaySubtitle) {
+        cardModalSubtitle.textContent = overlaySubtitle.textContent;
+    } else if (stageIndicator) {
+        cardModalSubtitle.textContent = stageIndicator.textContent;
+    } else {
+        cardModalSubtitle.textContent = '';
+    }
+
+    // Set tags
+    if (infoTags) {
+        cardModalTags.innerHTML = infoTags.innerHTML;
+    } else {
+        cardModalTags.innerHTML = '';
+    }
+
+    // Set description
+    if (infoDescription) {
+        cardModalDescription.textContent = infoDescription.textContent;
+    } else {
+        cardModalDescription.textContent = '';
+    }
+
+    // Update dots
+    updateModalDots();
+}
+
+// Function to generate and update dots
+function generateModalDots() {
+    modalSliderDots.innerHTML = '';
+    currentSectionCards.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (index === currentCardIndex) {
+            dot.classList.add('active');
+        }
+        dot.setAttribute('data-index', index);
+        dot.addEventListener('click', () => {
+            currentCardIndex = index;
+            populateModal(currentSectionCards[currentCardIndex]);
+        });
+        modalSliderDots.appendChild(dot);
+    });
+}
+
+// Function to update active dot
+function updateModalDots() {
+    const dots = modalSliderDots.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        if (index === currentCardIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Navigate to previous card
+modalPrevBtn.addEventListener('click', () => {
+    currentCardIndex = (currentCardIndex - 1 + currentSectionCards.length) % currentSectionCards.length;
+    populateModal(currentSectionCards[currentCardIndex]);
+});
+
+// Navigate to next card
+modalNextBtn.addEventListener('click', () => {
+    currentCardIndex = (currentCardIndex + 1) % currentSectionCards.length;
+    populateModal(currentSectionCards[currentCardIndex]);
+});
 
 cards.forEach(card => {
     card.addEventListener('click', () => {
-        // Extract card content
-        const cardImage = card.querySelector('.card-image');
-        const cardOverlay = card.querySelector('.card-overlay');
-        const cardInfo = card.querySelector('.card-info');
-
-        // Get overlay info
-        const overlayTitle = cardOverlay ? cardOverlay.querySelector('.card-title') : null;
-        const overlaySubtitle = cardOverlay ? cardOverlay.querySelector('.card-subtitle') : null;
-        const stageIndicator = cardOverlay ? cardOverlay.querySelector('.stage-indicator') : null;
-
-        // Get card-info content
-        const infoTitle = cardInfo ? cardInfo.querySelector('.card-title') : null;
-        const infoTags = cardInfo ? cardInfo.querySelector('.card-tags') : null;
-        const infoDescription = cardInfo ? cardInfo.querySelector('.card-description') : null;
-
-        // Populate modal with card content
-        if (cardImage) {
-            cardModalImage.src = cardImage.src;
-        }
-
-        // Use card-info title if available, otherwise use overlay title
-        if (infoTitle) {
-            cardModalTitle.textContent = infoTitle.textContent;
-        } else if (overlayTitle) {
-            cardModalTitle.textContent = overlayTitle.textContent;
-        }
-
-        // Set subtitle from overlay
-        if (overlaySubtitle) {
-            cardModalSubtitle.textContent = overlaySubtitle.textContent;
-        } else if (stageIndicator) {
-            cardModalSubtitle.textContent = stageIndicator.textContent;
+        // Find the card-slider section this card belongs to
+        const cardSlider = card.closest('.card-slider');
+        if (cardSlider) {
+            currentSectionCards = Array.from(cardSlider.querySelectorAll('.card'));
+            currentCardIndex = currentSectionCards.indexOf(card);
         } else {
-            cardModalSubtitle.textContent = '';
+            currentSectionCards = [card];
+            currentCardIndex = 0;
         }
 
-        // Set tags
-        if (infoTags) {
-            cardModalTags.innerHTML = infoTags.innerHTML;
-        } else {
-            cardModalTags.innerHTML = '';
-        }
+        // Generate dots for this section
+        generateModalDots();
 
-        // Set description
-        if (infoDescription) {
-            cardModalDescription.textContent = infoDescription.textContent;
-        } else {
-            cardModalDescription.textContent = '';
-        }
+        // Populate modal with clicked card content
+        populateModal(card);
 
         // Show the card info modal
         cardInfoModal.style.display = 'flex';
