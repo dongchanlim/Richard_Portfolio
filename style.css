@@ -679,16 +679,20 @@ header.header-section-projects .nav-links a.active {
     background-color: var(--netflix-dark-gray);
     border-radius: 4px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
     position: relative;
     cursor: pointer;
+    filter: brightness(0.5);
+    opacity: 0.7;
 }
 
 /* 카드 호버 효과 */
 .card:hover {
     transform: scale(1.05);
     z-index: 20;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    filter: brightness(1);
+    opacity: 1;
 }
 
 /* 카드 정보는 모달에서 표시, 카드에서는 숨김 처리 */
