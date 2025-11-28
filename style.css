@@ -576,8 +576,8 @@ header.header-section-projects .nav-links a.active {
 
 /* 섹션 타이틀 - hero-title 기반 통일된 스타일 (섹션별 색상 변경 제외) */
 .section-title {
-    /* 텍스트 속성 - hero-title과 동일 */
-    color: var(--netflix-orange);
+    /* 텍스트 속성 - 기본 흰색, Intersection Observer 트리거 시 색상 변경 */
+    color: var(--netflix-white);
     font-size: 2.5rem;
     font-weight: bold;
 
@@ -593,7 +593,7 @@ header.header-section-projects .nav-links a.active {
     transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.3s ease;
 }
 
-/* 섹션 타이틀 언더라인 - 통일된 스타일 (hero-title 색상과 동일) */
+/* 섹션 타이틀 언더라인 - 기본 흰색 */
 .section-title::after {
     content: '';
     position: absolute;
@@ -602,7 +602,7 @@ header.header-section-projects .nav-links a.active {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--netflix-orange), transparent);
+    background: linear-gradient(90deg, transparent, var(--netflix-white), transparent);
     border-radius: 2px;
     transition: width 0.5s ease, background 0.5s ease;
 }
@@ -1367,20 +1367,22 @@ footer {
         font-size: 1.5rem;
     }
 
-    /* 모달 모바일 레이아웃 */
+    /* 모달 모바일 레이아웃 - 수직 중앙 정렬 및 적절한 크기 */
     .modal {
-        padding: 0;
-        align-items: flex-start;
+        padding: 1rem;
+        align-items: center;
+        justify-content: center;
     }
 
     .modal-content {
-        max-width: 100%;
-        max-height: 100vh;
-        border-radius: 0;
+        max-width: 95%;
+        max-height: 85vh;
+        border-radius: 8px;
+        margin: auto;
     }
 
     .modal-header {
-        height: 220px;
+        height: 200px;
     }
 
     .modal-header-overlay {
@@ -1388,15 +1390,15 @@ footer {
     }
 
     .modal-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .modal-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .modal-body {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     /* 터치 친화적 모달 닫기 버튼 */
@@ -1616,17 +1618,26 @@ footer {
         margin: 0.8rem auto;
     }
 
-    /* 모달 세로 모바일 */
+    /* 모달 세로 모바일 - 수직 중앙 유지 */
+    .modal {
+        padding: 0.75rem;
+    }
+
+    .modal-content {
+        max-width: 98%;
+        max-height: 88vh;
+    }
+
     .modal-header {
-        height: 180px;
+        height: 170px;
     }
 
     .modal-title {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 
     .modal-section-title {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 
     .modal-buttons {
@@ -1854,46 +1865,56 @@ footer {
         min-width: 32px;
     }
 
-    /* 모달 소형 모바일 */
+    /* 모달 소형 모바일 - 수직 중앙 유지 */
+    .modal {
+        padding: 0.5rem;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 6px;
+    }
+
     .modal-header {
-        height: 160px;
+        height: 150px;
     }
 
     .modal-header-overlay {
-        padding: 1rem;
+        padding: 0.8rem;
     }
 
     .modal-title {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.15rem;
+        margin-bottom: 0.4rem;
     }
 
     .modal-subtitle {
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
     }
 
     .modal-body {
-        padding: 1rem;
+        padding: 0.8rem;
     }
 
     .modal-section {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
     }
 
     .modal-section-title {
-        font-size: 1rem;
-        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
     }
 
     .modal-slider-controls {
-        padding: 0.8rem 1rem;
+        padding: 0.6rem 0.8rem;
     }
 
     .modal-slider-btn {
-        width: 40px;
-        height: 40px;
-        margin: 0 8px;
+        width: 38px;
+        height: 38px;
+        margin: 0 6px;
     }
 
     .modal-slider-dots .dot {
