@@ -535,12 +535,51 @@ header.header-section-projects .nav-links a.active {
 
 /* 섹션 타이틀 */
 .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
     text-align: center;
     color: var(--netflix-light-gray);
-    transition: color 0.5s ease, text-shadow 0.5s ease;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.3s ease;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--netflix-light-gray), transparent);
+    border-radius: 2px;
+    transition: width 0.5s ease, background 0.5s ease;
+}
+
+/* 섹션별 활성 타이틀 언더라인 색상 */
+.section-experience.section-active .section-title::after {
+    width: 100px;
+    background: linear-gradient(90deg, transparent, #3498db, transparent);
+}
+
+.section-skills.section-active .section-title::after {
+    width: 100px;
+    background: linear-gradient(90deg, transparent, #2ecc71, transparent);
+}
+
+.section-awards.section-active .section-title::after {
+    width: 100px;
+    background: linear-gradient(90deg, transparent, #e67e22, transparent);
+}
+
+.section-projects.section-active .section-title::after {
+    width: 100px;
+    background: linear-gradient(90deg, transparent, #9b59b6, transparent);
 }
 
 /* 콘텐츠 서브타이틀 */
@@ -640,16 +679,20 @@ header.header-section-projects .nav-links a.active {
     background-color: var(--netflix-dark-gray);
     border-radius: 4px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
     position: relative;
     cursor: pointer;
+    filter: brightness(0.5);
+    opacity: 0.7;
 }
 
 /* 카드 호버 효과 */
 .card:hover {
     transform: scale(1.05);
     z-index: 20;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    filter: brightness(1);
+    opacity: 1;
 }
 
 /* 카드 정보는 모달에서 표시, 카드에서는 숨김 처리 */
@@ -1204,7 +1247,22 @@ footer {
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.2rem;
+    }
+
+    .section-title::after {
+        width: 50px;
+        height: 2px;
+        bottom: -6px;
+    }
+
+    .section-experience.section-active .section-title::after,
+    .section-skills.section-active .section-title::after,
+    .section-awards.section-active .section-title::after,
+    .section-projects.section-active .section-title::after {
+        width: 80px;
     }
 
     .content-subtitle {
@@ -1317,6 +1375,25 @@ footer {
 
     .dashboard-slider {
         height: 200px;
+    }
+
+    /* 소형 모바일 섹션 타이틀 */
+    .section-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+    }
+
+    .section-title::after {
+        width: 40px;
+        bottom: -5px;
+    }
+
+    .section-experience.section-active .section-title::after,
+    .section-skills.section-active .section-title::after,
+    .section-awards.section-active .section-title::after,
+    .section-projects.section-active .section-title::after {
+        width: 60px;
     }
 
     .hero-content {
