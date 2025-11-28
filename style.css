@@ -533,21 +533,30 @@ header.header-section-projects .nav-links a.active {
     padding: 2rem;
 }
 
-/* 섹션 타이틀 */
+/* 섹션 타이틀 - 통일된 스타일 */
 .section-title {
+    /* 텍스트 속성 - 모든 섹션 타이틀에 동일하게 적용 */
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
     font-weight: 700;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.2;
     text-align: center;
-    color: var(--netflix-light-gray);
-    letter-spacing: 0.1em;
     text-transform: uppercase;
-    position: relative;
-    display: inline-block;
+    letter-spacing: 0.1em;
+    color: var(--netflix-light-gray);
+
+    /* 레이아웃 속성 */
+    display: block;
     width: 100%;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+
+    /* 위치 및 효과 */
+    position: relative;
     transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.3s ease;
 }
 
+/* 섹션 타이틀 언더라인 - 통일된 스타일 */
 .section-title::after {
     content: '';
     position: absolute;
@@ -1246,10 +1255,16 @@ footer {
         height: 200px;
     }
 
+    /* 섹션 타이틀 - 태블릿/모바일 통일 스타일 */
     .section-title {
         font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+        text-transform: uppercase;
         letter-spacing: 0.08em;
-        margin-bottom: 1.2rem;
+        margin: 0 0 1.2rem 0;
+        padding: 0;
     }
 
     .section-title::after {
@@ -1377,11 +1392,16 @@ footer {
         height: 200px;
     }
 
-    /* 소형 모바일 섹션 타이틀 */
+    /* 섹션 타이틀 - 소형 모바일 통일 스타일 */
     .section-title {
         font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+        text-transform: uppercase;
         letter-spacing: 0.05em;
-        margin-bottom: 1rem;
+        margin: 0 0 1rem 0;
+        padding: 0;
     }
 
     .section-title::after {
