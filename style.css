@@ -533,17 +533,17 @@ header.header-section-projects .nav-links a.active {
     padding: 2rem;
 }
 
-/* 섹션 타이틀 - 통일된 스타일 */
+/* 섹션 타이틀 - 통일된 스타일 (hero-title과 동일한 텍스트 스타일) */
 .section-title {
-    /* 텍스트 속성 - 모든 섹션 타이틀에 동일하게 적용 */
+    /* 텍스트 속성 - hero-title과 동일하게 적용 */
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: bold;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.2;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--netflix-light-gray);
+    color: var(--netflix-orange);
 
     /* 레이아웃 속성 */
     display: block;
@@ -556,7 +556,7 @@ header.header-section-projects .nav-links a.active {
     transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.3s ease;
 }
 
-/* 섹션 타이틀 언더라인 - 통일된 스타일 */
+/* 섹션 타이틀 언더라인 - 통일된 스타일 (hero-title 색상과 동일) */
 .section-title::after {
     content: '';
     position: absolute;
@@ -565,7 +565,7 @@ header.header-section-projects .nav-links a.active {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--netflix-light-gray), transparent);
+    background: linear-gradient(90deg, transparent, var(--netflix-orange), transparent);
     border-radius: 2px;
     transition: width 0.5s ease, background 0.5s ease;
 }
@@ -1255,10 +1255,10 @@ footer {
         height: 200px;
     }
 
-    /* 섹션 타이틀 - 태블릿/모바일 통일 스타일 */
+    /* 섹션 타이틀 - 태블릿/모바일 통일 스타일 (hero-title과 동일) */
     .section-title {
         font-size: 1.8rem;
-        font-weight: 700;
+        font-weight: bold;
         line-height: 1.2;
         text-align: center;
         text-transform: uppercase;
@@ -1392,10 +1392,10 @@ footer {
         height: 200px;
     }
 
-    /* 섹션 타이틀 - 소형 모바일 통일 스타일 */
+    /* 섹션 타이틀 - 소형 모바일 통일 스타일 (hero-title과 동일) */
     .section-title {
         font-size: 1.5rem;
-        font-weight: 700;
+        font-weight: bold;
         line-height: 1.2;
         text-align: center;
         text-transform: uppercase;
