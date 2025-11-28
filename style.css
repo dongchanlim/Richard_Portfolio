@@ -49,6 +49,10 @@
     --netflix-light-gray: #808080;
     --netflix-white: #ffffff;
     --netflix-orange: #f5751d;
+
+    /* 터치 친화적 최소 크기 (44px - Apple 권장) */
+    --touch-target-min: 44px;
+    --touch-spacing: 12px;
 }
 
 /* 전역 리셋 - 모든 요소의 기본 스타일 초기화 */
@@ -139,6 +143,43 @@ header.scrolled {
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--netflix-orange);
+}
+
+/* 햄버거 메뉴 버튼 (모바일용) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: var(--touch-target-min);
+    height: var(--touch-target-min);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 102;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--netflix-white);
+    margin: 3px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 햄버거 메뉴 활성화 시 X 모양 */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* 헤더 동적 색상 효과 - 섹션별 로고 색상 변경 */
@@ -1137,14 +1178,36 @@ footer {
 
 /* --------------------------------------------------------------------------
    모바일 가로 - max-width: 768px
+   터치 친화적 인터페이스 및 레이아웃 최적화
 -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+    /* 레이아웃 간격 축소 */
+    .content-section,
+    .hero-banner {
+        margin: 2rem auto;
+    }
+
+    .intro-section {
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+
+    .content-section {
+        padding: 1.5rem;
+    }
+
+    /* 햄버거 메뉴 표시 */
+    .menu-toggle {
+        display: flex;
+    }
+
     /* 네비게이션 모바일 레이아웃 */
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 70%;
+        width: 75%;
+        max-width: 300px;
         height: 100vh;
         background-color: var(--netflix-black);
         flex-direction: column;
@@ -1152,6 +1215,7 @@ footer {
         justify-content: center;
         transition: right 0.3s ease;
         z-index: 101;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
     }
 
     .nav-links.active {
@@ -1159,11 +1223,18 @@ footer {
     }
 
     .nav-links li {
-        margin: 1.5rem 0;
+        margin: 0;
+        width: 100%;
+        text-align: center;
     }
 
+    /* 터치 친화적 네비게이션 링크 */
     .nav-links a {
-        font-size: 1.1rem;
+        display: block;
+        font-size: 1.2rem;
+        padding: var(--touch-spacing) 1.5rem;
+        min-height: var(--touch-target-min);
+        line-height: var(--touch-target-min);
     }
 
     /* 히어로 배너 모바일 레이아웃 */
@@ -1183,6 +1254,7 @@ footer {
     .hero-right {
         margin-top: 2rem;
         margin-bottom: 0;
+        min-height: 350px;
     }
 
     .hero-title {
@@ -1193,9 +1265,11 @@ footer {
         justify-content: center;
     }
 
+    /* 터치 친화적 배지 */
     .profession-badges .badge {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.9rem;
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+        min-height: 36px;
     }
 
     .social-links {
@@ -1208,47 +1282,165 @@ footer {
 
     .hero-buttons {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 0.8rem;
+        width: 100%;
+    }
+
+    /* 터치 친화적 버튼 */
+    .btn {
+        min-height: var(--touch-target-min);
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        text-align: center;
     }
 
     /* 대시보드 슬라이더 모바일 */
     .dashboard-slider {
-        height: 250px;
+        height: 280px;
     }
 
     .dashboard-slider-controls {
-        margin-top: 10px;
+        margin-top: 15px;
+        gap: var(--touch-spacing);
     }
 
+    /* 터치 친화적 슬라이더 버튼 */
     .dashboard-slider-btn {
-        width: 36px;
-        height: 36px;
+        width: var(--touch-target-min);
+        height: var(--touch-target-min);
     }
 
+    /* 터치 친화적 도트 인디케이터 */
     .dot {
-        width: 8px;
-        height: 8px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .dashboard-slider-dots {
+        gap: var(--touch-spacing);
     }
 
     .dashboard-title {
         font-size: 1rem;
-        padding: 0.7rem;
+        padding: 0.8rem;
     }
 
-    /* 카드 모바일 레이아웃 */
+    /* 카드 모바일 레이아웃 - 터치 친화적 */
     .card {
-        width: 360px;
-        height: 220px;
+        width: 300px;
+        height: 200px;
+        filter: brightness(0.8);
+        opacity: 0.9;
+    }
+
+    /* 모바일에서 카드 탭 시 활성화 효과 */
+    .card:active {
+        transform: scale(0.98);
+        filter: brightness(1);
+        opacity: 1;
+    }
+
+    .card-slider {
+        gap: 1rem;
+        padding: 1rem 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .card {
+        scroll-snap-align: center;
+    }
+
+    /* 슬라이더 컨트롤 모바일 - 항상 표시 */
+    .slider-controls {
+        opacity: 0.7;
+        width: 40px;
+    }
+
+    .slider-controls i {
+        font-size: 1.5rem;
     }
 
     /* 모달 모바일 레이아웃 */
-    .modal-title {
-        font-size: 1.6rem;
+    .modal {
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
     }
 
     .modal-header {
-        height: 200px;
+        height: 220px;
+    }
+
+    .modal-header-overlay {
+        padding: 1.5rem;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+    }
+
+    /* 터치 친화적 모달 닫기 버튼 */
+    .modal-close {
+        width: var(--touch-target-min);
+        height: var(--touch-target-min);
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+    }
+
+    /* 터치 친화적 모달 슬라이더 버튼 */
+    .modal-slider-btn {
+        width: var(--touch-target-min);
+        height: var(--touch-target-min);
+    }
+
+    .modal-slider-dots .dot {
+        width: 12px;
+        height: 12px;
+    }
+
+    .modal-slider-dots {
+        gap: var(--touch-spacing);
+    }
+
+    .modal-buttons {
+        flex-wrap: wrap;
+    }
+
+    .modal-buttons .btn {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    /* 모달 리소스 그리드 모바일 */
+    .modal-resources {
+        grid-template-columns: 1fr;
+    }
+
+    /* 터치 친화적 리소스 링크 */
+    .resource-link {
+        padding: 0.5rem 0;
+        min-height: 36px;
+        display: flex;
+        align-items: center;
     }
 
     /* 섹션 타이틀 - 태블릿/모바일 (hero-title 기반) */
@@ -1277,20 +1469,36 @@ footer {
         font-size: 1rem;
     }
 
-    /* 특성 슬라이더 모바일 */
+    /* 특성 슬라이더 모바일 - 터치 스크롤 최적화 */
     .trait-slider-container {
         padding: 0 1rem;
-    }
-
-    .trait-card {
-        width: 320px;
-        min-height: 300px;
-        padding: 1.8rem;
     }
 
     .trait-slider {
         gap: 1rem;
         padding: 1rem 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .trait-card {
+        width: 300px;
+        min-height: 280px;
+        padding: 1.5rem;
+        scroll-snap-align: center;
+    }
+
+    /* 모바일에서 특성 카드 탭 효과 */
+    .trait-card:active {
+        transform: scale(0.98);
+        box-shadow: 0 5px 15px rgba(245, 117, 29, 0.3);
+    }
+
+    /* 특성 슬라이더 컨트롤 - 모바일에서 항상 표시 */
+    .trait-slider-prev,
+    .trait-slider-next {
+        opacity: 0.6;
+        width: 40px;
     }
 
     .trait-title {
@@ -1300,17 +1508,74 @@ footer {
     .trait-description {
         font-size: 0.95rem;
     }
+
+    /* 푸터 모바일 */
+    footer {
+        padding: 2rem 5%;
+    }
+
+    .footer-title {
+        font-size: 1.3rem;
+    }
+
+    /* 터치 친화적 소셜 링크 */
+    .social-links a {
+        display: inline-block;
+        padding: 0.5rem;
+        min-height: 36px;
+    }
 }
 
 
 /* --------------------------------------------------------------------------
    모바일 세로 - max-width: 576px
+   세로 모드 최적화 및 터치 인터랙션 강화
 -------------------------------------------------------------------------- */
 @media (max-width: 576px) {
+    /* 레이아웃 간격 추가 축소 */
+    .content-section,
+    .hero-banner,
+    .intro-section {
+        margin: 1.5rem auto;
+    }
+
+    .content-section {
+        padding: 1rem;
+    }
+
+    /* 카드 세로 모바일 */
+    .card {
+        width: 280px;
+        height: 180px;
+    }
+
+    .card-slider {
+        gap: 0.8rem;
+        padding: 0.8rem 0;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .card-overlay {
+        padding: 0.8rem;
+    }
+
+    /* 슬라이더 컨트롤 더 넓게 */
+    .slider-controls {
+        width: 36px;
+    }
+
+    /* 특성 카드 세로 모바일 */
     .trait-card {
-        width: calc(100vw - 80px);
+        width: calc(100vw - 60px);
         max-width: 300px;
-        min-height: 320px;
+        min-height: 300px;
         padding: 1.5rem;
     }
 
@@ -1320,11 +1585,14 @@ footer {
 
     .trait-slider {
         gap: 0.8rem;
+        padding: 0.8rem 0;
     }
 
+    /* 터치 친화적 슬라이더 컨트롤 */
     .trait-slider-prev,
     .trait-slider-next {
-        width: 10%;
+        width: 36px;
+        min-width: 36px;
     }
 
     .trait-title {
@@ -1342,32 +1610,86 @@ footer {
         height: 40px;
         margin: 0.8rem auto;
     }
+
+    /* 모달 세로 모바일 */
+    .modal-header {
+        height: 180px;
+    }
+
+    .modal-title {
+        font-size: 1.3rem;
+    }
+
+    .modal-section-title {
+        font-size: 1.1rem;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .modal-buttons .btn {
+        width: 100%;
+        min-width: auto;
+    }
+
+    /* 대시보드 슬라이더 세로 모바일 */
+    .dashboard-slider {
+        height: 220px;
+    }
+
+    .dashboard-card {
+        max-width: calc(100vw - 40px);
+    }
+
+    /* 프로필 이미지 */
+    .profile-picture {
+        max-width: 300px;
+    }
 }
 
 
 /* --------------------------------------------------------------------------
    소형 모바일 - max-width: 480px
+   소형 화면 최적화 및 가독성 강화
 -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
+    /* 레이아웃 최소 간격 */
+    .content-section,
+    .hero-banner,
+    .intro-section {
+        margin: 1rem auto;
+    }
+
+    .content-section {
+        padding: 0.8rem;
+    }
+
+    .intro-section {
+        padding: 1rem;
+    }
+
+    /* 히어로 배너 소형 모바일 */
     .hero-banner {
-        padding: 70px 0 30px 0;
+        padding: 70px 0 25px 0;
+    }
+
+    .hero-left {
+        padding: 0 5%;
+    }
+
+    .hero-right {
+        min-height: 280px;
+        padding: 0 5%;
+    }
+
+    .hero-content {
+        margin-top: 2vh;
     }
 
     .hero-title {
-        font-size: 1.8rem;
-    }
-
-    .profession-badges {
-        justify-content: center;
-    }
-
-    .profession-badges .badge {
-        font-size: 0.75rem;
-        padding: 0.35rem 0.8rem;
-    }
-
-    .social-links {
-        font-size: 0.8rem;
+        font-size: 1.7rem;
     }
 
     .hero-subtitle {
@@ -1375,14 +1697,51 @@ footer {
         margin-bottom: 1rem;
     }
 
+    /* 터치 친화적 배지 - 소형 */
+    .profession-badges {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .profession-badges .badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        min-height: 32px;
+    }
+
+    .social-links {
+        font-size: 0.8rem;
+    }
+
+    /* 버튼 소형 모바일 - 터치 친화적 유지 */
     .btn {
         width: 100%;
+        min-height: 42px;
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
     }
 
+    /* 대시보드 슬라이더 소형 모바일 */
     .dashboard-slider {
-        height: 200px;
+        height: 180px;
+    }
+
+    .dashboard-card {
+        max-width: calc(100vw - 30px);
+    }
+
+    .dashboard-title {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+
+    .dashboard-slider-controls {
+        margin-top: 10px;
+    }
+
+    .dashboard-slider-btn {
+        width: 40px;
+        height: 40px;
     }
 
     /* 섹션 타이틀 - 소형 모바일 (hero-title 기반) */
@@ -1406,32 +1765,68 @@ footer {
         width: 60px;
     }
 
-    .hero-content {
-        margin-top: 2vh;
+    .content-subtitle {
+        font-size: 0.9rem;
     }
 
-    .nav-links li {
-        margin-left: 0.8rem;
+    /* 네비게이션 소형 모바일 */
+    .nav-links {
+        width: 85%;
+        max-width: none;
     }
 
     .nav-links a {
-        font-size: 0.8rem;
+        font-size: 1.1rem;
+        padding: 1rem;
     }
 
     .logo {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    /* 카드 소형 모바일 */
+    .card {
+        width: 260px;
+        height: 170px;
+    }
+
+    .card-slider {
+        gap: 0.6rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+        font-size: 0.7rem;
+    }
+
+    /* 슬라이더 컨트롤 소형 */
+    .slider-controls {
+        width: 32px;
+    }
+
+    .slider-controls i {
+        font-size: 1.2rem;
     }
 
     /* 소형 화면 특성 카드 */
     .trait-card {
-        width: calc(100vw - 60px);
+        width: calc(100vw - 50px);
         max-width: 280px;
-        min-height: 340px;
-        padding: 1.3rem;
+        min-height: 320px;
+        padding: 1.2rem;
     }
 
     .trait-slider-container {
-        padding: 0 0.25rem;
+        padding: 0;
+    }
+
+    .trait-slider {
+        gap: 0.6rem;
+        padding: 0.6rem 0.5rem;
     }
 
     .trait-title {
@@ -1442,8 +1837,99 @@ footer {
         font-size: 0.85rem;
     }
 
+    .trait-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* 터치 친화적 슬라이더 컨트롤 */
     .trait-slider-prev,
     .trait-slider-next {
-        width: 12%;
+        width: 32px;
+        min-width: 32px;
+    }
+
+    /* 모달 소형 모바일 */
+    .modal-header {
+        height: 160px;
+    }
+
+    .modal-header-overlay {
+        padding: 1rem;
+    }
+
+    .modal-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-section-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .modal-slider-controls {
+        padding: 0.8rem 1rem;
+    }
+
+    .modal-slider-btn {
+        width: 40px;
+        height: 40px;
+        margin: 0 8px;
+    }
+
+    .modal-slider-dots .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* 리소스 카드 소형 */
+    .resource-card {
+        padding: 0.8rem;
+    }
+
+    .resource-title {
+        font-size: 0.9rem;
+    }
+
+    .resource-link {
+        font-size: 0.75rem;
+    }
+
+    /* 푸터 소형 모바일 */
+    footer {
+        padding: 1.5rem 5%;
+        margin-top: 1.5rem;
+    }
+
+    .footer-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-links {
+        font-size: 0.75rem;
+    }
+
+    /* 프로필 이미지 소형 */
+    .profile-picture {
+        max-width: 250px;
+    }
+
+    .section-description {
+        font-size: 0.9rem;
     }
 }
