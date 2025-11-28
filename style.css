@@ -533,21 +533,17 @@ header.header-section-projects .nav-links a.active {
     padding: 2rem;
 }
 
-/* 섹션 타이틀 - 통일된 스타일 (hero-title과 동일한 텍스트 스타일) */
+/* 섹션 타이틀 - hero-title 기반 통일된 스타일 (섹션별 색상 변경 제외) */
 .section-title {
-    /* 텍스트 속성 - hero-title과 동일하게 적용 */
+    /* 텍스트 속성 - hero-title과 동일 */
+    color: var(--netflix-orange);
     font-size: 2.5rem;
     font-weight: bold;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.2;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--netflix-orange);
 
     /* 레이아웃 속성 */
     display: block;
     width: 100%;
+    text-align: center;
     margin: 0 0 1.5rem 0;
     padding: 0;
 
@@ -1255,14 +1251,11 @@ footer {
         height: 200px;
     }
 
-    /* 섹션 타이틀 - 태블릿/모바일 통일 스타일 (hero-title과 동일) */
+    /* 섹션 타이틀 - 태블릿/모바일 (hero-title 기반) */
     .section-title {
         font-size: 1.8rem;
         font-weight: bold;
-        line-height: 1.2;
         text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
         margin: 0 0 1.2rem 0;
         padding: 0;
     }
@@ -1392,14 +1385,11 @@ footer {
         height: 200px;
     }
 
-    /* 섹션 타이틀 - 소형 모바일 통일 스타일 (hero-title과 동일) */
+    /* 섹션 타이틀 - 소형 모바일 (hero-title 기반) */
     .section-title {
         font-size: 1.5rem;
         font-weight: bold;
-        line-height: 1.2;
         text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
         margin: 0 0 1rem 0;
         padding: 0;
     }
