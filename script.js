@@ -247,16 +247,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 비디오 슬라이더 기능
+// 비디오 슬라이더 기능 (페이지 자동 슬라이드)
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.video-slide');
     let currentIndex = 0;
 
     // 초기 슬라이드 설정
-    updateMainSlider();
+    updatePageSlider();
 
-    // 슬라이더 업데이트 함수 (main page slider only)
-    function updateMainSlider() {
+    // 슬라이더 업데이트 함수
+    function updatePageSlider() {
         slides.forEach((slide, index) => {
             if (index === currentIndex) {
                 slide.classList.add('active');
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 자동 슬라이드 설정 (5초마다)
     let slideInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % slides.length;
-        updateMainSlider();
+        updatePageSlider();
     }, 5000);
 
     // 마우스 오버 또는 터치 시 자동 슬라이드 멈춤
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sliderContainer.addEventListener('mouseleave', () => {
             slideInterval = setInterval(() => {
                 currentIndex = (currentIndex + 1) % slides.length;
-                updateMainSlider();
+                updatePageSlider();
             }, 5000);
         });
 
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sliderContainer.addEventListener('touchend', () => {
             slideInterval = setInterval(() => {
                 currentIndex = (currentIndex + 1) % slides.length;
-                updateMainSlider();
+                updatePageSlider();
             }, 5000);
         }, {passive: true});
 
@@ -318,44 +318,64 @@ document.addEventListener('DOMContentLoaded', function() {
             if (touchEndX < touchStartX - 75) {
                 // 왼쪽으로 스와이프
                 currentIndex = (currentIndex + 1) % slides.length;
-                updateMainSlider();
+                updatePageSlider();
             } else if (touchEndX > touchStartX + 75) {
                 // 오른쪽으로 스와이프
                 currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                updateMainSlider();
+                updatePageSlider();
             }
         }
     }
 
-    // Video slide modal functionality with slider controls
+// Video slide modal functionality with navigation controls
+document.addEventListener('DOMContentLoaded', function() {
     const videoSlides = document.querySelectorAll('.video-slide');
     const videoModal = document.getElementById('video-slide-modal');
     const videoModalImage = document.getElementById('video-modal-image');
     const videoModalTitle = document.getElementById('video-modal-title');
-    const modalDots = videoModal ? videoModal.querySelectorAll('.video-slider-dots .dot') : [];
-    const modalPrevBtn = videoModal ? videoModal.querySelector('.video-slider-btn.prev') : null;
-    const modalNextBtn = videoModal ? videoModal.querySelector('.video-slider-btn.next') : null;
+    const videoModalPrevBtn = document.getElementById('video-modal-prev-btn');
+    const videoModalNextBtn = document.getElementById('video-modal-next-btn');
+    const videoModalSliderDots = document.getElementById('video-modal-slider-dots');
 
-    let modalCurrentIndex = 0;
+    let allVideoSlides = Array.from(videoSlides);
+    let currentVideoIndex = 0;
 
-    // Update modal content based on current index
-    function updateModalContent() {
-        const currentSlide = slides[modalCurrentIndex];
-        if (currentSlide) {
-            const thumbnail = currentSlide.querySelector('.video-thumbnail');
-            const title = currentSlide.querySelector('.video-title');
+    // Function to populate video modal
+    function populateVideoModal(slide) {
+        const thumbnail = slide.querySelector('.video-thumbnail');
+        const title = slide.querySelector('.video-title');
 
-            if (thumbnail && videoModalImage) {
-                videoModalImage.src = thumbnail.src;
-            }
-            if (title && videoModalTitle) {
-                videoModalTitle.textContent = title.textContent;
-            }
+        if (thumbnail && title) {
+            videoModalImage.src = thumbnail.src;
+            videoModalTitle.textContent = title.textContent;
         }
 
-        // Update dots
-        modalDots.forEach((dot, index) => {
-            if (index === modalCurrentIndex) {
+        updateVideoModalDots();
+    }
+
+    // Function to generate dots for video modal
+    function generateVideoModalDots() {
+        videoModalSliderDots.innerHTML = '';
+        allVideoSlides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === currentVideoIndex) {
+                dot.classList.add('active');
+            }
+            dot.setAttribute('data-index', index);
+            dot.addEventListener('click', () => {
+                currentVideoIndex = index;
+                populateVideoModal(allVideoSlides[currentVideoIndex]);
+            });
+            videoModalSliderDots.appendChild(dot);
+        });
+    }
+
+    // Function to update active dot
+    function updateVideoModalDots() {
+        const dots = videoModalSliderDots.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            if (index === currentVideoIndex) {
                 dot.classList.add('active');
             } else {
                 dot.classList.remove('active');
@@ -363,35 +383,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Modal prev button
-    if (modalPrevBtn) {
-        modalPrevBtn.addEventListener('click', () => {
-            modalCurrentIndex = (modalCurrentIndex - 1 + slides.length) % slides.length;
-            updateModalContent();
-        });
-    }
-
-    // Modal next button
-    if (modalNextBtn) {
-        modalNextBtn.addEventListener('click', () => {
-            modalCurrentIndex = (modalCurrentIndex + 1) % slides.length;
-            updateModalContent();
-        });
-    }
-
-    // Modal dot click events
-    modalDots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            modalCurrentIndex = parseInt(dot.getAttribute('data-index'));
-            updateModalContent();
-        });
+    // Navigate to previous video slide
+    videoModalPrevBtn.addEventListener('click', () => {
+        currentVideoIndex = (currentVideoIndex - 1 + allVideoSlides.length) % allVideoSlides.length;
+        populateVideoModal(allVideoSlides[currentVideoIndex]);
     });
 
-    // Open modal when video slide is clicked
+    // Navigate to next video slide
+    videoModalNextBtn.addEventListener('click', () => {
+        currentVideoIndex = (currentVideoIndex + 1) % allVideoSlides.length;
+        populateVideoModal(allVideoSlides[currentVideoIndex]);
+    });
+
+    // Click handler for video slides
     videoSlides.forEach((slide, index) => {
         slide.addEventListener('click', () => {
-            modalCurrentIndex = index;
-            updateModalContent();
+            currentVideoIndex = index;
+            generateVideoModalDots();
+            populateVideoModal(slide);
 
             if (videoModal) {
                 videoModal.style.display = 'flex';
