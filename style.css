@@ -1,45 +1,45 @@
 /* ============================================================================
-   TABLE OF CONTENTS
+   목차 (TABLE OF CONTENTS)
    ============================================================================
-   1. Base Styles
-      - CSS Variables
-      - Global Resets
-      - Body & Typography
+   1. 기본 스타일 (Base Styles)
+      - CSS 변수 정의
+      - 전역 리셋
+      - 본문 및 타이포그래피
 
-   2. Layout
-      - Container & Width Management
-      - Section Spacing
+   2. 레이아웃 (Layout)
+      - 컨테이너 및 너비 관리
+      - 섹션 간격
 
-   3. Components
-      - Header & Navigation
-      - Hero Banner
-      - Intro Section
-      - Video Slider
-      - Features Grid
-      - Content Sections
-      - Card Slider & Cards
-      - Modal
-      - Buttons
-      - Footer
+   3. 컴포넌트 (Components)
+      - 헤더 및 네비게이션
+      - 히어로 배너
+      - 인트로 섹션
+      - 대시보드 슬라이더
+      - 특성(Trait) 슬라이더
+      - 콘텐츠 섹션
+      - 카드 슬라이더 및 카드
+      - 모달
+      - 버튼
+      - 푸터
 
-   4. Utilities
-      - Stage Colors & Effects
-      - Icons
+   4. 유틸리티 (Utilities)
+      - 섹션 색상 및 효과
+      - 아이콘 스타일
 
-   5. Responsive Design
-      - Large Desktop (max-width: 1024px)
-      - Tablet (max-width: 992px)
-      - Mobile Landscape (max-width: 768px)
-      - Mobile Portrait (max-width: 576px)
-      - Small Mobile (max-width: 480px)
+   5. 반응형 디자인 (Responsive Design)
+      - 대형 데스크톱 (max-width: 1024px)
+      - 태블릿 (max-width: 992px)
+      - 모바일 가로 (max-width: 768px)
+      - 모바일 세로 (max-width: 576px)
+      - 소형 모바일 (max-width: 480px)
 ============================================================================ */
 
 
 /* ============================================================================
-   1. BASE STYLES
+   1. 기본 스타일 (BASE STYLES)
 ============================================================================ */
 
-/* CSS Variables */
+/* CSS 변수 정의 - 테마 색상 및 레이아웃 설정 */
 :root {
     --layout-max-width: 1500px;
     --netflix-red: #e50914;
@@ -51,7 +51,7 @@
     --netflix-orange: #f5751d;
 }
 
-/* Global Resets */
+/* 전역 리셋 - 모든 요소의 기본 스타일 초기화 */
 * {
     margin: 0;
     padding: 0;
@@ -59,7 +59,7 @@
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Body & Typography */
+/* 본문 스타일 */
 body {
     background-color: var(--netflix-black);
     color: var(--netflix-white);
@@ -68,10 +68,10 @@ body {
 
 
 /* ============================================================================
-   2. LAYOUT
+   2. 레이아웃 (LAYOUT)
 ============================================================================ */
 
-/* Container & Width Management */
+/* 컨테이너 및 섹션 너비 관리 */
 .content-section,
 .hero-banner {
     max-width: 1500px;
@@ -85,11 +85,12 @@ body {
 
 
 /* ============================================================================
-   3. COMPONENTS
+   3. 컴포넌트 (COMPONENTS)
 ============================================================================ */
 
-/* Header & Navigation
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   헤더 및 네비게이션 - 고정 헤더 및 메뉴 스타일
+-------------------------------------------------------------------------- */
 header {
     position: fixed;
     top: 0;
@@ -103,10 +104,12 @@ header {
     transition: background-color 0.5s ease;
 }
 
+/* 스크롤 시 헤더 배경 변경 */
 header.scrolled {
     background-color: var(--netflix-black);
 }
 
+/* 로고 스타일 */
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -115,6 +118,7 @@ header.scrolled {
     transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
+/* 네비게이션 링크 컨테이너 */
 .nav-links {
     display: flex;
     list-style: none;
@@ -124,6 +128,7 @@ header.scrolled {
     margin-left: 1.5rem;
 }
 
+/* 네비게이션 링크 스타일 */
 .nav-links a {
     color: var(--netflix-light-gray);
     text-decoration: none;
@@ -136,38 +141,40 @@ header.scrolled {
     color: var(--netflix-orange);
 }
 
-/* Header Dynamic Color Effects */
-header.header-stage1 .logo,
-header.header-stage2 .logo,
-header.header-stage3 .logo,
-header.header-stage4 .logo {
+/* 헤더 동적 색상 효과 - 섹션별 로고 색상 변경 */
+header.header-section-experience .logo,
+header.header-section-skills .logo,
+header.header-section-awards .logo,
+header.header-section-projects .logo {
     color: var(--netflix-orange);
     text-shadow: 0 0 15px rgba(245, 117, 29, 0.5);
 }
 
-header.header-stage1 .nav-links a.active {
+/* 섹션별 활성 네비게이션 링크 색상 */
+header.header-section-experience .nav-links a.active {
     color: #3498db;
     text-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
 }
 
-header.header-stage2 .nav-links a.active {
+header.header-section-skills .nav-links a.active {
     color: #2ecc71;
     text-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
 }
 
-header.header-stage3 .nav-links a.active {
+header.header-section-awards .nav-links a.active {
     color: #e67e22;
     text-shadow: 0 0 10px rgba(230, 126, 34, 0.3);
 }
 
-header.header-stage4 .nav-links a.active {
+header.header-section-projects .nav-links a.active {
     color: #9b59b6;
     text-shadow: 0 0 10px rgba(155, 89, 182, 0.3);
 }
 
 
-/* Hero Banner
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   히어로 배너 - 메인 배너 섹션
+-------------------------------------------------------------------------- */
 .hero-banner {
     min-height: 25vh;
     background: linear-gradient(to top, var(--netflix-black) 0%, rgba(20, 20, 20, 0.8) 100%);
@@ -177,12 +184,14 @@ header.header-stage4 .nav-links a.active {
     padding: 0;
 }
 
+/* 히어로 컨테이너 - 좌우 분할 레이아웃 */
 .hero-container {
     display: flex;
     width: 100%;
     height: 100%;
 }
 
+/* 히어로 좌측 - 텍스트 영역 */
 .hero-left {
     width: 60%;
     padding: 0 4%;
@@ -191,6 +200,7 @@ header.header-stage4 .nav-links a.active {
     justify-content: center;
 }
 
+/* 히어로 우측 - 이미지 영역 */
 .hero-right {
     width: 40%;
     display: flex;
@@ -200,11 +210,13 @@ header.header-stage4 .nav-links a.active {
     min-height: 500px;
 }
 
+/* 히어로 콘텐츠 래퍼 */
 .hero-content {
     max-width: 650px;
     margin-top: 5vh;
 }
 
+/* 히어로 타이틀 */
 .hero-title {
     color: var(--netflix-orange);
     font-size: 3.5rem;
@@ -212,16 +224,19 @@ header.header-stage4 .nav-links a.active {
     font-weight: bold;
 }
 
+/* 히어로 서브헤딩 컨테이너 */
 .hero-subheading {
     margin-bottom: 1.5rem;
 }
 
+/* 히어로 서브타이틀 */
 .hero-subtitle {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     color: var(--netflix-light-gray);
 }
 
+/* 직업 배지 컨테이너 */
 .profession-badges {
     display: flex;
     gap: 0.75rem;
@@ -229,6 +244,7 @@ header.header-stage4 .nav-links a.active {
     flex-wrap: wrap;
 }
 
+/* 직업 배지 스타일 */
 .profession-badges .badge {
     font-size: 0.9rem;
     font-weight: 600;
@@ -245,62 +261,60 @@ header.header-stage4 .nav-links a.active {
     box-shadow: 0 4px 12px rgba(245, 117, 29, 0.4);
 }
 
+/* 히어로 버튼 컨테이너 */
 .hero-buttons {
     margin: 1rem auto;
     gap: 1rem;
 }
 
 
-/* Intro Section
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   인트로 섹션 - 자기소개 영역
+-------------------------------------------------------------------------- */
 .intro-section {
     padding: 2rem;
     text-align: center;
 }
 
-.intro-section-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--netflix-orange);
-    text-decoration: none;
-}
-
-.intro-section-subtitle {
-    font-size: 1.5rem;
-    color: var(--netflix-light-gray);
-    margin-bottom: 3rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.profile_picture {
+/* 프로필 이미지 스타일 */
+.profile-picture {
     width: 100%;
     height: auto;
     max-width: 400px;
     object-fit: contain;
 }
 
+/* 하이라이트 텍스트 */
 .highlight {
     color: var(--netflix-orange);
 }
 
+/* 섹션 설명 텍스트 */
+.section-description {
+    font-size: 1.0rem;
+    color: var(--netflix-light-gray);
+    line-height: 1.6;
+}
 
-/* Video Slider
-   -------------------------------------------------------------------------- */
-.video-slider-container {
+
+/* --------------------------------------------------------------------------
+   대시보드 슬라이더 - 대시보드 쇼케이스 영역
+-------------------------------------------------------------------------- */
+.dashboard-slider-container {
     width: 100%;
     position: relative;
     overflow: hidden;
 }
 
-.video-slider {
+/* 대시보드 슬라이더 래퍼 */
+.dashboard-slider {
     position: relative;
     height: 400px;
     overflow: hidden;
 }
 
-.video-slide {
+/* 개별 대시보드 슬라이드 */
+.dashboard-slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -313,12 +327,14 @@ header.header-stage4 .nav-links a.active {
     justify-content: center;
 }
 
-.video-slide.active {
+/* 활성 대시보드 슬라이드 */
+.dashboard-slide.active {
     opacity: 1;
     z-index: 2;
 }
 
-.video-card {
+/* 대시보드 카드 스타일 */
+.dashboard-card {
     width: 100%;
     max-width: 560px;
     position: relative;
@@ -326,32 +342,22 @@ header.header-stage4 .nav-links a.active {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s ease;
-    border: 1px solid #fffffe1;
+    border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.video-card:hover {
+.dashboard-card:hover {
     transform: scale(1.02);
 }
 
-.video-thumbnail {
+/* 대시보드 썸네일 이미지 */
+.dashboard-thumbnail {
     width: 100%;
     display: block;
     object-fit: cover;
 }
 
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.video-title {
+/* 대시보드 타이틀 */
+.dashboard-title {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -363,14 +369,16 @@ header.header-stage4 .nav-links a.active {
     margin: 0;
 }
 
-.video-slider-controls {
+/* 대시보드 슬라이더 컨트롤 */
+.dashboard-slider-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-.video-slider-btn {
+/* 대시보드 슬라이더 버튼 */
+.dashboard-slider-btn {
     background: rgba(255,255,255,0.2);
     border: none;
     width: 40px;
@@ -385,15 +393,17 @@ header.header-stage4 .nav-links a.active {
     transition: background-color 0.3s ease;
 }
 
-.video-slider-btn:hover {
+.dashboard-slider-btn:hover {
     background: rgba(255,255,255,0.4);
 }
 
-.video-slider-dots {
+/* 대시보드 슬라이더 도트 인디케이터 */
+.dashboard-slider-dots {
     display: flex;
     gap: 8px;
 }
 
+/* 도트 스타일 */
 .dot {
     width: 10px;
     height: 10px;
@@ -403,14 +413,16 @@ header.header-stage4 .nav-links a.active {
     transition: background-color 0.3s ease;
 }
 
+/* 활성 도트 */
 .dot.active {
     background-color: var(--netflix-red);
 }
 
 
-/* Features Grid (Slider Mask)
-   -------------------------------------------------------------------------- */
-.features-slider-container {
+/* --------------------------------------------------------------------------
+   특성(Trait) 슬라이더 - 개인 특성 카드 영역
+-------------------------------------------------------------------------- */
+.trait-slider-container {
     position: relative;
     margin-top: 2rem;
     max-width: 1500px;
@@ -419,7 +431,8 @@ header.header-stage4 .nav-links a.active {
     width: 100%;
 }
 
-.features-grid {
+/* 특성 슬라이더 */
+.trait-slider {
     display: flex;
     gap: 1.5rem;
     overflow-x: auto;
@@ -430,11 +443,13 @@ header.header-stage4 .nav-links a.active {
     scrollbar-width: none;
 }
 
-.features-grid::-webkit-scrollbar {
+/* 스크롤바 숨김 */
+.trait-slider::-webkit-scrollbar {
     display: none;
 }
 
-.feature-card {
+/* 특성 카드 스타일 */
+.trait-card {
     flex: 0 0 auto;
     width: 350px;
     min-height: 280px;
@@ -447,25 +462,29 @@ header.header-stage4 .nav-links a.active {
     border: 1px solid #ffffff11;
 }
 
-.feature-card:hover {
+/* 특성 카드 호버 효과 */
+.trait-card:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 10px 20px rgba(245, 117, 29, 0.2);
 }
 
-.feature-title {
+/* 특성 카드 타이틀 */
+.trait-title {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--netflix-white);
     margin-bottom: 0.8rem;
 }
 
-.feature-description {
+/* 특성 카드 설명 */
+.trait-description {
     font-size: 1.0rem;
     color: var(--netflix-light-gray);
     line-height: 1.6;
 }
 
-.feature-icon {
+/* 특성 아이콘 */
+.trait-icon {
     width: 48px;
     height: 48px;
     border-radius: 10px;
@@ -475,8 +494,9 @@ header.header-stage4 .nav-links a.active {
     margin: 1rem auto;
 }
 
-.features-slider-prev,
-.features-slider-next {
+/* 특성 슬라이더 이전/다음 버튼 */
+.trait-slider-prev,
+.trait-slider-next {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -491,26 +511,29 @@ header.header-stage4 .nav-links a.active {
     z-index: 10;
 }
 
-.features-slider-container:hover .features-slider-prev,
-.features-slider-container:hover .features-slider-next {
+/* 호버 시 슬라이더 컨트롤 표시 */
+.trait-slider-container:hover .trait-slider-prev,
+.trait-slider-container:hover .trait-slider-next {
     opacity: 1;
 }
 
-.features-slider-prev {
+.trait-slider-prev {
     left: 0;
 }
 
-.features-slider-next {
+.trait-slider-next {
     right: 0;
 }
 
 
-/* Content Sections
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   콘텐츠 섹션 - 공통 섹션 스타일
+-------------------------------------------------------------------------- */
 .content-section {
     padding: 2rem;
 }
 
+/* 섹션 타이틀 */
 .section-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -520,6 +543,7 @@ header.header-stage4 .nav-links a.active {
     transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
+/* 콘텐츠 서브타이틀 */
 .content-subtitle {
     font-size: 1.0rem;
     margin-bottom: 1.0rem;
@@ -527,34 +551,36 @@ header.header-stage4 .nav-links a.active {
     text-align: center;
 }
 
-/* Section Title Dynamic Colors */
-.stage1.section-active .section-title {
+/* 섹션별 활성 타이틀 색상 */
+.section-experience.section-active .section-title {
     color: #3498db;
     text-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
 }
 
-.stage2.section-active .section-title {
+.section-skills.section-active .section-title {
     color: #2ecc71;
     text-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
 }
 
-.stage3.section-active .section-title {
+.section-awards.section-active .section-title {
     color: #e67e22;
     text-shadow: 0 0 15px rgba(230, 126, 34, 0.5);
 }
 
-.stage4.section-active .section-title {
+.section-projects.section-active .section-title {
     color: #9b59b6;
     text-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
 }
 
 
-/* Card Slider & Cards
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   카드 슬라이더 및 카드 - 경력/스킬/수상/프로젝트 카드
+-------------------------------------------------------------------------- */
 .slider-container {
     position: relative;
 }
 
+/* 슬라이더 컨트롤 버튼 (이전/다음) */
 .slider-controls {
     position: absolute;
     top: 0;
@@ -570,6 +596,7 @@ header.header-stage4 .nav-links a.active {
     z-index: 10;
 }
 
+/* 호버 시 슬라이더 컨트롤 표시 */
 .slider-container:hover .slider-controls {
     opacity: 1;
 }
@@ -582,11 +609,13 @@ header.header-stage4 .nav-links a.active {
     right: 0;
 }
 
+/* 슬라이더 컨트롤 아이콘 */
 .slider-controls i {
     font-size: 2rem;
     color: white;
 }
 
+/* 카드 슬라이더 래퍼 */
 .card-slider {
     display: flex;
     gap: 2rem;
@@ -598,10 +627,12 @@ header.header-stage4 .nav-links a.active {
     scrollbar-width: none;
 }
 
+/* 스크롤바 숨김 */
 .card-slider::-webkit-scrollbar {
     display: none;
 }
 
+/* 카드 스타일 */
 .card {
     flex: 0 0 auto;
     width: 300px;
@@ -614,24 +645,27 @@ header.header-stage4 .nav-links a.active {
     cursor: pointer;
 }
 
+/* 카드 호버 효과 */
 .card:hover {
     transform: scale(1.05);
     z-index: 20;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Card info is now displayed in modal, hide it on cards */
+/* 카드 정보는 모달에서 표시, 카드에서는 숨김 처리 */
 .card:hover .card-info {
     opacity: 0;
     transform: translateY(100%);
 }
 
+/* 카드 이미지 */
 .card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* 카드 오버레이 - 하단 그라데이션 */
 .card-overlay {
     position: absolute;
     bottom: 0;
@@ -641,17 +675,20 @@ header.header-stage4 .nav-links a.active {
     padding: 1rem;
 }
 
+/* 카드 타이틀 */
 .card-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
+/* 카드 서브타이틀 */
 .card-subtitle {
     font-size: 0.8rem;
     color: var(--netflix-light-gray);
 }
 
+/* 카드 정보 컨테이너 (숨김 처리) */
 .card-info {
     position: absolute;
     bottom: 0;
@@ -665,12 +702,14 @@ header.header-stage4 .nav-links a.active {
     z-index: 5;
 }
 
+/* 카드 설명 */
 .card-description {
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
     color: var(--netflix-light-gray);
 }
 
+/* 카드 태그 컨테이너 */
 .card-tags {
     display: flex;
     flex-wrap: wrap;
@@ -678,6 +717,7 @@ header.header-stage4 .nav-links a.active {
     margin-bottom: 0.5rem;
 }
 
+/* 태그 스타일 */
 .tag {
     font-size: 0.7rem;
     padding: 0.2rem 0.5rem;
@@ -687,8 +727,9 @@ header.header-stage4 .nav-links a.active {
 }
 
 
-/* Modal
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   모달 - 상세 정보 팝업
+-------------------------------------------------------------------------- */
 .modal {
     position: fixed;
     top: 0;
@@ -704,6 +745,7 @@ header.header-stage4 .nav-links a.active {
     padding: 2rem;
 }
 
+/* 모달 콘텐츠 컨테이너 */
 .modal-content {
     background-color: var(--netflix-dark-gray);
     width: 100%;
@@ -716,17 +758,20 @@ header.header-stage4 .nav-links a.active {
     flex-direction: column;
 }
 
+/* 모달 헤더 */
 .modal-header {
     position: relative;
     height: 400px;
 }
 
+/* 모달 헤더 이미지 */
 .modal-header-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* 모달 헤더 오버레이 */
 .modal-header-overlay {
     position: absolute;
     top: 0;
@@ -740,55 +785,65 @@ header.header-stage4 .nav-links a.active {
     justify-content: flex-end;
 }
 
+/* 모달 타이틀 */
 .modal-title {
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
+/* 모달 서브타이틀 */
 .modal-subtitle {
     font-size: 1rem;
     color: var(--netflix-light-gray);
     margin-bottom: 1rem;
 }
 
+/* 모달 버튼 컨테이너 */
 .modal-buttons {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
+/* 모달 본문 */
 .modal-body {
     padding: 2rem;
     overflow-y: auto;
 }
 
+/* 모달 섹션 */
 .modal-section {
     margin-bottom: 2rem;
 }
 
+/* 모달 섹션 타이틀 */
 .modal-section-title {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     color: var(--netflix-white);
 }
 
+/* 모달 리소스 그리드 */
 .modal-resources {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
 }
 
+/* 리소스 카드 */
 .resource-card {
     background-color: var(--netflix-medium-gray);
     padding: 1rem;
     border-radius: 4px;
 }
 
+/* 리소스 타이틀 */
 .resource-title {
     font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
+/* 리소스 링크 */
 .resource-link {
     color: var(--netflix-light-gray);
     text-decoration: none;
@@ -801,6 +856,7 @@ header.header-stage4 .nav-links a.active {
     text-decoration: underline;
 }
 
+/* 모달 닫기 버튼 */
 .modal-close {
     position: absolute;
     top: 1rem;
@@ -813,7 +869,7 @@ header.header-stage4 .nav-links a.active {
     z-index: 10;
 }
 
-/* Modal Slider Controls */
+/* 모달 슬라이더 컨트롤 */
 .modal-slider-controls {
     display: flex;
     justify-content: center;
@@ -823,6 +879,7 @@ header.header-stage4 .nav-links a.active {
     border-top: 1px solid var(--netflix-medium-gray);
 }
 
+/* 모달 슬라이더 버튼 */
 .modal-slider-btn {
     background: rgba(255, 255, 255, 0.2);
     border: none;
@@ -842,11 +899,13 @@ header.header-stage4 .nav-links a.active {
     background: rgba(255, 255, 255, 0.4);
 }
 
+/* 모달 슬라이더 도트 컨테이너 */
 .modal-slider-dots {
     display: flex;
     gap: 8px;
 }
 
+/* 모달 슬라이더 도트 */
 .modal-slider-dots .dot {
     width: 10px;
     height: 10px;
@@ -856,6 +915,7 @@ header.header-stage4 .nav-links a.active {
     transition: background-color 0.3s ease;
 }
 
+/* 활성 도트 */
 .modal-slider-dots .dot.active {
     background-color: var(--netflix-red);
 }
@@ -865,8 +925,9 @@ header.header-stage4 .nav-links a.active {
 }
 
 
-/* Buttons
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   버튼 - 공통 버튼 스타일
+-------------------------------------------------------------------------- */
 .btn {
     padding: 0.7rem 1.5rem;
     border-radius: 4px;
@@ -877,11 +938,13 @@ header.header-stage4 .nav-links a.active {
     font-size: 1rem;
 }
 
+/* 기본 버튼 */
 .btn-primary {
     background-color: var(--netflix-orange);
     color: white;
 }
 
+/* 보조 버튼 */
 .btn-secondary {
     background-color: rgba(109, 109, 110, 0.7);
     color: white;
@@ -892,8 +955,9 @@ header.header-stage4 .nav-links a.active {
 }
 
 
-/* Footer
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   푸터 - 페이지 하단 영역
+-------------------------------------------------------------------------- */
 footer {
     padding: 2rem 4%;
     background-color: var(--netflix-black);
@@ -903,18 +967,21 @@ footer {
     margin-top: 2rem;
 }
 
+/* 푸터 타이틀 */
 .footer-title {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     color: var(--netflix-light-gray);
 }
 
+/* 소셜 링크 컨테이너 */
 .social-links {
     font-size: 1rem;
     color: var(--netflix-light-gray);
     margin-bottom: 0.3rem;
 }
 
+/* 소셜 링크 */
 .social-links a {
     color: var(--netflix-light-gray);
     text-decoration: none;
@@ -928,31 +995,33 @@ footer {
 
 
 /* ============================================================================
-   4. UTILITIES
+   4. 유틸리티 (UTILITIES)
 ============================================================================ */
 
-/* Stage Colors & Effects
-   -------------------------------------------------------------------------- */
-.stage1 {
-    --stage-color: #3498db;
+/* --------------------------------------------------------------------------
+   섹션 색상 및 효과 - 각 섹션별 테마 색상
+-------------------------------------------------------------------------- */
+.section-experience {
+    --section-color: #3498db;
 }
 
-.stage2 {
-    --stage-color: #2ecc71;
+.section-skills {
+    --section-color: #2ecc71;
 }
 
-.stage3 {
-    --stage-color: #e67e22;
+.section-awards {
+    --section-color: #e67e22;
 }
 
-.stage4 {
-    --stage-color: #9b59b6;
+.section-projects {
+    --section-color: #9b59b6;
 }
 
-.stage-indicator {
+/* 카테고리 배지 */
+.category-badge {
     display: inline-block;
     padding: 0.2rem 0.5rem;
-    background-color: var(--stage-color);
+    background-color: var(--section-color);
     color: white;
     border-radius: 4px;
     font-size: 0.8rem;
@@ -960,8 +1029,9 @@ footer {
 }
 
 
-/* Icons
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   아이콘 스타일 - 특성 카드 아이콘
+-------------------------------------------------------------------------- */
 .icon-clipboard,
 .icon-chat,
 .icon-briefcase,
@@ -974,11 +1044,12 @@ footer {
 
 
 /* ============================================================================
-   5. RESPONSIVE DESIGN
+   5. 반응형 디자인 (RESPONSIVE DESIGN)
 ============================================================================ */
 
-/* Large Desktop - max-width: 1024px
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   대형 데스크톱 - max-width: 1024px
+-------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
     .hero-container {
         text-align: center;
@@ -995,7 +1066,7 @@ footer {
         margin-bottom: 2rem;
     }
 
-    .video-slider {
+    .dashboard-slider {
         height: 350px;
     }
 
@@ -1005,23 +1076,22 @@ footer {
 }
 
 
-/* Tablet - max-width: 992px
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   태블릿 - max-width: 992px
+-------------------------------------------------------------------------- */
 @media (max-width: 992px) {
-    .feature-card {
+    .trait-card {
         width: 300px;
         min-height: 250px;
     }
 }
 
 
-/* Mobile Landscape - max-width: 768px
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   모바일 가로 - max-width: 768px
+-------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-    }
-
+    /* 네비게이션 모바일 레이아웃 */
     .nav-links {
         position: fixed;
         top: 0;
@@ -1048,6 +1118,7 @@ footer {
         font-size: 1.1rem;
     }
 
+    /* 히어로 배너 모바일 레이아웃 */
     .hero-banner {
         min-height: auto;
         padding: 80px 0 40px 0;
@@ -1079,7 +1150,6 @@ footer {
         padding: 0.4rem 0.9rem;
     }
 
-    .contact-info,
     .social-links {
         font-size: 0.9rem;
     }
@@ -1094,15 +1164,16 @@ footer {
         gap: 0.8rem;
     }
 
-    .video-slider {
+    /* 대시보드 슬라이더 모바일 */
+    .dashboard-slider {
         height: 250px;
     }
 
-    .video-slider-controls {
+    .dashboard-slider-controls {
         margin-top: 10px;
     }
 
-    .video-slider-btn {
+    .dashboard-slider-btn {
         width: 36px;
         height: 36px;
     }
@@ -1112,25 +1183,18 @@ footer {
         height: 8px;
     }
 
-    .play-button {
-        width: 48px;
-        height: 48px;
-    }
-
-    .play-button i {
-        font-size: 1.2rem;
-    }
-
-    .video-title {
+    .dashboard-title {
         font-size: 1rem;
         padding: 0.7rem;
     }
 
+    /* 카드 모바일 레이아웃 */
     .card {
         width: 360px;
         height: 220px;
     }
 
+    /* 모달 모바일 레이아웃 */
     .modal-title {
         font-size: 1.6rem;
     }
@@ -1143,70 +1207,71 @@ footer {
         font-size: 2rem;
     }
 
-    .section-subtitle {
+    .content-subtitle {
         font-size: 1rem;
     }
 
-    /* Feature slider mobile adjustments */
-    .features-slider-container {
+    /* 특성 슬라이더 모바일 */
+    .trait-slider-container {
         padding: 0 1rem;
     }
 
-    .feature-card {
+    .trait-card {
         width: 320px;
         min-height: 300px;
         padding: 1.8rem;
     }
 
-    .features-grid {
+    .trait-slider {
         gap: 1rem;
         padding: 1rem 0;
     }
 
-    .feature-title {
+    .trait-title {
         font-size: 1.3rem;
     }
 
-    .feature-description {
+    .trait-description {
         font-size: 0.95rem;
     }
 }
 
 
-/* Mobile Portrait - max-width: 576px
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   모바일 세로 - max-width: 576px
+-------------------------------------------------------------------------- */
 @media (max-width: 576px) {
-    .feature-card {
+    .trait-card {
         width: calc(100vw - 80px);
         max-width: 300px;
         min-height: 320px;
         padding: 1.5rem;
     }
 
-    .features-slider-container {
+    .trait-slider-container {
         padding: 0 0.5rem;
     }
 
-    .features-grid {
+    .trait-slider {
         gap: 0.8rem;
     }
 
-    .features-slider-prev,
-    .features-slider-next {
+    .trait-slider-prev,
+    .trait-slider-next {
         width: 10%;
     }
 
-    .feature-title {
+    .trait-title {
         font-size: 1.2rem;
         margin-bottom: 0.6rem;
     }
 
-    .feature-description {
+    .trait-description {
         font-size: 0.9rem;
         line-height: 1.5;
     }
 
-    .feature-icon {
+    .trait-icon {
         width: 40px;
         height: 40px;
         margin: 0.8rem auto;
@@ -1214,8 +1279,9 @@ footer {
 }
 
 
-/* Small Mobile - max-width: 480px
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   소형 모바일 - max-width: 480px
+-------------------------------------------------------------------------- */
 @media (max-width: 480px) {
     .hero-banner {
         padding: 70px 0 30px 0;
@@ -1234,7 +1300,6 @@ footer {
         padding: 0.35rem 0.8rem;
     }
 
-    .contact-info,
     .social-links {
         font-size: 0.8rem;
     }
@@ -1250,7 +1315,7 @@ footer {
         font-size: 0.9rem;
     }
 
-    .video-slider {
+    .dashboard-slider {
         height: 200px;
     }
 
@@ -1270,28 +1335,28 @@ footer {
         font-size: 1.5rem;
     }
 
-    /* Very small screens - ensure full card visibility */
-    .feature-card {
+    /* 소형 화면 특성 카드 */
+    .trait-card {
         width: calc(100vw - 60px);
         max-width: 280px;
         min-height: 340px;
         padding: 1.3rem;
     }
 
-    .features-slider-container {
+    .trait-slider-container {
         padding: 0 0.25rem;
     }
 
-    .feature-title {
+    .trait-title {
         font-size: 1.1rem;
     }
 
-    .feature-description {
+    .trait-description {
         font-size: 0.85rem;
     }
 
-    .features-slider-prev,
-    .features-slider-next {
+    .trait-slider-prev,
+    .trait-slider-next {
         width: 12%;
     }
 }
